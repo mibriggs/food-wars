@@ -1,0 +1,11 @@
+<script>
+	import '../app.css';
+</script>
+
+<slot />
+
+<!-- 
+    Start using Tailwind’s utility classes to style your content, 
+    making sure to set lang="postcss" for any <style> blocks that 
+    need to be processed by Tailwind. 
+-->
