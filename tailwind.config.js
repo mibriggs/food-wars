@@ -27,6 +27,9 @@ export default {
 			},
 			borderRadius: {
 				'4xl': '25px;'
+			},
+			dropShadow: {
+				'overlay-alabaster': '0px 4px 4px #E7EBE4'
 			}
 		}
 	},
