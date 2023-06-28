@@ -2,10 +2,16 @@
 	import '../app.css';
 </script>
 
-<slot class="bg-snow" />
+<slot />
 
 <!-- 
     Start using Tailwind’s utility classes to style your content, 
     making sure to set lang="postcss" for any <style> blocks that 
     need to be processed by Tailwind. 
 -->
+
+<style lang="postcss">
+	:global(body) {
+		background-color: #fcf7f8;
+	}
+</style>
