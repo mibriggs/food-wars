@@ -5,6 +5,9 @@ const rotateY = plugin(function ({ addUtilities }) {
 	addUtilities({
 		'.rotateY-180': {
 			transform: 'rotateY(180deg)'
+		},
+		'.rotateY-0': {
+			transform: 'rotateY(0)'
 		}
 	});
 });
@@ -20,7 +23,8 @@ export default {
 			},
 			fontFamily: {
 				abhaya: ['"Abhaya Libre"', 'sans-serif'],
-				lora: ['Lora', 'sans-serif']
+				lora: ['Lora', 'sans-serif'],
+				sawarabi: ['"Sawarabi Mincho"', 'sans-serif']
 			},
 			boxShadow: {
 				'3xl': '0px 4px 4px rgba(0, 0, 0, 0.25)'

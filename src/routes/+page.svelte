@@ -4,5 +4,5 @@
 
 <div class="flex h-screen flex-row items-center justify-evenly">
 	<FoodCard />
-	<FoodCard />
+	<!-- <FoodCard /> -->
 </div>

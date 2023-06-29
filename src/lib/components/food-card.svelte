@@ -1,63 +1,71 @@
 <script lang="ts">
 	import bulgogi from '../assets/bulgogi.jpeg';
 	import turnCard from '../assets/turn-arrow.svg';
-	import { fade } from 'svelte/transition';
 
-	let isFacingFront = true;
+	let isFlipped: boolean = false;
 
-	const handleCardTurn = () => {
-		isFacingFront = !isFacingFront;
+	const handleCardFlip = () => {
+		isFlipped = !isFlipped;
+		console.log(isFlipped);
+		console.log(`${isFlipped ? 'Back' : 'Front'}`);
 	};
-
-	// function flip(node: any, { duration = 300 }) {
-	//   return {
-	//     duration,
-	//     css: (t: number) => 'transform: rotateY( 180deg ); transition: transform 0.5s; perspective: 500px; transform-style: preserve-3d;'
-	//   };
-	// }
 </script>
 
-<!-- {#if isFacingFront} -->
-<div
-	class={`flex h-[640px] w-[400px] flex-col items-center rounded-4xl bg-alabaster font-abhaya text-2xl shadow-3xl ${
-		isFacingFront ? 'duration-1000 -rotateY-180' : 'duration-1000 rotateY-180'
-	}`}
->
-	<img
-		src={bulgogi}
-		alt="Bulgogi"
-		class={`mt-[25px] h-[525px] w-[350px] rounded-4xl drop-shadow-overlay-alabaster ${
-			!isFacingFront ? 'hidden' : ''
-		}`}
-	/>
-	<div
-		class={`mt-3 flex w-full flex-col items-center justify-center ${
-			!isFacingFront ? 'hidden' : ''
-		}`}
-	>
-		<div>Bulgogi</div>
-		<div class="relative flex w-full flex-row items-center justify-center">
-			<div class="text-center">Cook Time: 45 min</div>
-			<button on:click={handleCardTurn} class="absolute -bottom-3 right-4">
+<div class="container flex h-full flex-col items-center justify-center">
+	<div class="flex flex-col items-center justify-center gap-3">
+		<div
+			class="card relative h-[640px] w-[400px] rounded-4xl bg-alabaster font-sawarabi text-xl font-bold text-jet shadow-3xl rotateY-180"
+			class:flipped={isFlipped}
+		>
+			<div class="front absolute flex h-full w-full flex-col items-center rotateY-180">
+				<img
+					src={bulgogi}
+					alt="Bulgogi"
+					class="mt-[25px] h-[525px] w-[350px] rounded-4xl drop-shadow-overlay-alabaster"
+				/>
+				<div class="mt-3 flex w-full flex-col items-center justify-center">
+					<div>Bulgogi</div>
+					<div>Cook Time: 45 min.</div>
+				</div>
+			</div>
+			<div class="back absolute flex h-full w-full items-center justify-center">
+				Back Information
+			</div>
+			<button on:click={handleCardFlip} class="flipper w-fit">
 				<img src={turnCard} alt="reverse card button" />
 			</button>
 		</div>
 	</div>
-	<div class={`${isFacingFront ? 'hidden' : 'rotateY-180'}`}>Hello world</div>
-	<button
-		on:click={handleCardTurn}
-		class={`absolute bottom-[2px] left-4 ${isFacingFront ? 'hidden' : 'rotateY-180'}`}
-	>
-		<img src={turnCard} alt="reverse card button" />
-	</button>
 </div>
-<!-- {:else} -->
-<!-- {/if}
-<div
-	class='relative flex h-[640px] w-[400px] flex-col items-center rounded-4xl bg-alabaster font-abhaya text-2xl shadow-3xl'
->
-	Backside with recipe info
-	<button on:click={handleCardTurn} class="absolute bottom-[2px] right-4">
-		<img src={turnCard} alt="reverse card button" />
-	</button>
-</div> -->
+
+<style lang="postcss">
+	.container {
+		gap: 1em;
+		perspective: 100vh;
+	}
+
+	.flipper {
+		transform-style: preserve-3d;
+		position: absolute;
+		bottom: 0.3em;
+		left: 1em;
+	}
+
+	.card {
+		/* aspect-ratio: 2.5 / 3.5; */
+		border-radius: 2em;
+		transition: transform 0.4s;
+		transform-style: preserve-3d;
+		user-select: none;
+		cursor: pointer;
+	}
+
+	.card.flipped {
+		transform: rotateY(0);
+	}
+
+	.front,
+	.back {
+		backface-visibility: hidden;
+	}
+</style>
