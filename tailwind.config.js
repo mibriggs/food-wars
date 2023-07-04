@@ -19,7 +19,8 @@ export default {
 			colors: {
 				snow: '#FCF7F8',
 				alabaster: '#E7EBE4',
-				jet: '#39393A'
+				jet: '#39393A',
+				raisin: '#332E3C'
 			},
 			fontFamily: {
 				abhaya: ['"Abhaya Libre"', 'sans-serif'],

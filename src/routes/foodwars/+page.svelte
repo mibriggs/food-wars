@@ -37,6 +37,9 @@
 	}
 </script>
 
+<!-- <div class="flex items-center justify-center">
+	Select the meal you'd prefer to Cook
+</div> -->
 <div class="flex h-full flex-col items-center justify-center text-3xl">
 	{#if next_idx < currArr.length}
 		{currArr[selected_idx]} vs {currArr[next_idx]}
@@ -67,8 +70,10 @@
 		</div>
 	{/if}
 </div>
+
+
 <div class="flex h-screen flex-row items-center justify-evenly">
-	<FoodCard />
+	<FoodCard on:focus={() => console.log('focused')} />
 	<FoodCard />
 </div>
 <button class="w-fit rounded-2xl bg-teal-600 p-4 text-2xl text-snow">
