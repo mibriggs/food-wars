@@ -6,7 +6,7 @@
 	};
 	const createRandomStringArray = (length: number) => {
 		const newArray: string[] = [];
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < length; i++) {
 			newArray.push(createRandomString());
 		}
 		return newArray;
@@ -21,61 +21,62 @@
 		selected_idx = 0;
 		next_idx = selected_idx + 1;
 	};
+	const handleSelection = (isRightCard: boolean) => {
+		isRightSelected = isRightCard;
+		isLeftSelected = !isRightCard;
+	};
 
 	let currArr: string[] = createRandomStringArray(10);
-	let selected_idx = 0;
+	let selected_idx: number = 0;
 	let next_idx: number;
 	let nextArr: string[] = [];
+	let isLeftSelected: boolean = false;
+	let isRightSelected: boolean = false;
 
 	$: next_idx = selected_idx + 1;
-	$: console.log('Current Array', currArr);
-	$: console.log('Next Array', nextArr);
 	$: if (selected_idx > currArr.length - 1) {
 		updateReferences();
-		console.log('Current Array', currArr);
-		console.log('Next Array', nextArr);
 	}
 </script>
 
-<!-- <div class="flex items-center justify-center">
-	Select the meal you'd prefer to Cook
-</div> -->
-<div class="flex h-full flex-col items-center justify-center text-3xl">
-	{#if next_idx < currArr.length}
-		{currArr[selected_idx]} vs {currArr[next_idx]}
-		<div class="flex gap-5">
-			<button
-				on:click={() => handleAdd(selected_idx)}
-				class="w-fit rounded-2xl bg-teal-600 p-4 text-snow">Add {currArr[selected_idx]}</button
-			>
-			<button
-				on:click={() => handleAdd(next_idx)}
-				class="w-fit rounded-2xl bg-teal-600 p-4 text-snow">Add {currArr[next_idx]}</button
-			>
-		</div>
-	{:else if currArr.length === 1}
-		Winner
-		{currArr[0]}
-	{:else}
-		{currArr[selected_idx]}
-		<div class="flex gap-5">
-			<button
-				on:click={() => handleAdd(selected_idx)}
-				class="w-fit rounded-2xl bg-teal-600 p-4 text-snow">Add {currArr[selected_idx]}</button
-			>
-			<button
-				on:click={() => (selected_idx += 2)}
-				class="w-fit rounded-2xl bg-teal-600 p-4 text-snow">Discard {currArr[selected_idx]}</button
-			>
-		</div>
-	{/if}
-</div>
+<div class="flex h-full flex-col items-center gap-11 font-sawarabi">
+	<h1 class="pt-10 text-3xl font-bold">Select the meal you'd prefer to Cook</h1>
+	<!-- <div class="flex h-full flex-col items-center justify-center text-3xl">
+		{#if next_idx < currArr.length}
+			{currArr[selected_idx]} vs {currArr[next_idx]}
+			<div class="flex gap-5">
+				<button
+					on:click={() => handleAdd(selected_idx)}
+					class="w-fit rounded-2xl bg-teal-600 p-4 text-snow">Add {currArr[selected_idx]}</button
+				>
+				<button
+					on:click={() => handleAdd(next_idx)}
+					class="w-fit rounded-2xl bg-teal-600 p-4 text-snow">Add {currArr[next_idx]}</button
+				>
+			</div>
+		{:else if currArr.length === 1}
+			Winner
+			{currArr[0]}
+		{:else}
+			{currArr[selected_idx]}
+			<div class="flex gap-5">
+				<button
+					on:click={() => handleAdd(selected_idx)}
+					class="w-fit rounded-2xl bg-teal-600 p-4 text-snow">Add {currArr[selected_idx]}</button
+				>
+				<button
+					on:click={() => (selected_idx += 2)}
+					class="w-fit rounded-2xl bg-teal-600 p-4 text-snow">Discard {currArr[selected_idx]}</button
+				>
+			</div>
+		{/if}
+	</div> -->
+	<div class="flex flex-row items-center gap-32">
+		<FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
+		<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} />
+	</div>
 
-
-<div class="flex h-screen flex-row items-center justify-evenly">
-	<FoodCard on:focus={() => console.log('focused')} />
-	<FoodCard />
+	<button class="mr-6 mt-20 w-fit self-end rounded-2xl bg-teal-600 p-4 text-2xl text-snow">
+		<a href="/">Reset</a>
+	</button>
 </div>
-<button class="w-fit rounded-2xl bg-teal-600 p-4 text-2xl text-snow">
-	<a href="/">Reset</a>
-</button>
