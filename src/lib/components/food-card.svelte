@@ -50,7 +50,6 @@
 
 	.card {
 		aspect-ratio: 2.5 / 3.5;
-		border-radius: 2em;
 		transition: transform 0.4s;
 		height: 700px;
 		width: 400px;
@@ -65,6 +64,7 @@
 
 	.front,
 	.back {
+		-webkit-backface-visibility: hidden; /* Safari */
 		backface-visibility: hidden;
 	}
 
