@@ -74,8 +74,8 @@
 		{/if}
 	</div> -->
 	<div class="flex flex-row items-center gap-32">
-		<!-- <FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
-		<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} /> -->
+		<FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
+		<!-- <FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} /> -->
 		<NewCard />
 	</div>
 
