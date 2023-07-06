@@ -16,13 +16,13 @@
 </script>
 
 <div class="container flex h-full flex-col items-center justify-center">
-	<!-- <div
+	<div
 		class="card relative flex h-[700px] w-[400px] flex-col rounded-4xl bg-alabaster font-sawarabi text-xl font-bold text-raisin shadow-3xl rotateY-180"
 		class:flipped={isFlipped}
 		class:selected={isSelected}
 		on:click={handleCardClicked}
 		on:keypress={handleCardClicked}
-	> -->
+	>
 		<div class="front absolute flex h-full w-full flex-col items-center rotateY-180">
 			<img
 				src={bulgogi}
@@ -39,7 +39,7 @@
 			<div>Back Information</div>
 			<SeeMoreButton on:click={handleCardFlip}>See Front</SeeMoreButton>
 		</div> -->
-	<!-- </div> -->
+	</div>
 </div>
 
 <style lang="postcss">
