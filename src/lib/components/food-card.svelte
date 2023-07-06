@@ -23,7 +23,7 @@
 		on:click={handleCardClicked}
 		on:keypress={handleCardClicked}
 	>
-		<div class="front absolute flex h-full w-full flex-col items-center rotateY-180">
+		<div class="front relative flex h-full w-full flex-col items-center rotateY-180">
 			<img
 				src={bulgogi}
 				alt="Bulgogi"
