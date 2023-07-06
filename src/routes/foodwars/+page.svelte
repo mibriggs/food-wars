@@ -1,5 +1,6 @@
 <script lang="ts">
 	import FoodCard from '../../lib/components/food-card.svelte';
+	import restartIcon from '../../lib/assets/restart.svg';
 
 	const createRandomString = () => {
 		return (Math.random() + 1).toString(36).substring(7);
@@ -40,7 +41,7 @@
 </script>
 
 <div class="flex h-full flex-col items-center gap-11 font-sawarabi">
-	<h1 class="pt-10 text-3xl font-bold">Select the meal you'd prefer to Cook</h1>
+	<h1 class="pt-5 text-3xl font-bold">Select the meal you'd prefer to Cook</h1>
 	<!-- <div class="flex h-full flex-col items-center justify-center text-3xl">
 		{#if next_idx < currArr.length}
 			{currArr[selected_idx]} vs {currArr[next_idx]}
@@ -76,7 +77,20 @@
 		<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} />
 	</div>
 
-	<button class="mr-6 mt-20 w-fit self-end rounded-2xl bg-teal-600 p-4 text-2xl text-snow">
-		<a href="/">Reset</a>
-	</button>
+	<!-- 
+		We Want a button Here basically it should be hidden by default
+		and once a dish has been it should be shown and say something like?
+		Continue With {dishName} >
+	-->
+
+	<a
+		href="/"
+		class="m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 text-2xl shadow-md"
+	>
+		<div class="flex items-center justify-center gap-2 text-raisin">
+			<div>Restart</div>
+			<img src={restartIcon} alt="restart" />
+		</div>
+	</a>
+	<!-- </button> -->
 </div>

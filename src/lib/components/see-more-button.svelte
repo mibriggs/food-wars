@@ -1,5 +1,5 @@
 <script lang="ts">
-	import rightArrow from '../assets/arrow_right_alt.svg';
+	import rightArrow from '../assets/arrow_right.svg';
 </script>
 
 <button on:click|stopPropagation>

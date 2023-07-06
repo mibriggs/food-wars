@@ -2,14 +2,14 @@
 	import { createEventDispatcher } from 'svelte';
 	import bulgogi from '../assets/bulgogi.jpeg';
 	import SeeMoreButton from './see-more-button.svelte';
-	export let isSelected: boolean;
+
+	export let isSelected: boolean = false;
 	let isFlipped: boolean = false;
 	const dispatch = createEventDispatcher();
 
 	const handleCardFlip = () => {
 		isFlipped = !isFlipped;
 	};
-
 	const handleCardClicked = () => {
 		dispatch('cardClicked');
 	};
