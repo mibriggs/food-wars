@@ -1,6 +1,7 @@
 <script lang="ts">
 	import FoodCard from '../../lib/components/food-card.svelte';
 	import restartIcon from '../../lib/assets/restart.svg';
+	import NewCard from '$lib/components/new-card.svelte';
 
 	const createRandomString = () => {
 		return (Math.random() + 1).toString(36).substring(7);
@@ -73,8 +74,9 @@
 		{/if}
 	</div> -->
 	<div class="flex flex-row items-center gap-32">
-		<FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
-		<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} />
+		<!-- <FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
+		<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} /> -->
+		<NewCard />
 	</div>
 
 	<!-- 
