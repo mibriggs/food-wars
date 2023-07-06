@@ -22,14 +22,14 @@
 		class:selected={isSelected}
 		on:click={handleCardClicked}
 		on:keypress={handleCardClicked}
-	>
-		<div class="front absolute flex h-full w-full flex-col items-center rotateY-180"> -->
+	> -->
+		<div class="front absolute flex h-full w-full flex-col items-center rotateY-180">
 			<img
 				src={bulgogi}
 				alt="Bulgogi"
 				class="mt-[25px] h-[525px] w-[350px] rounded-4xl drop-shadow-overlay-alabaster"
 			/>
-			<!-- <div class="mt-3 flex w-full flex-col items-center justify-center pb-2">
+			<div class="mt-3 flex w-full flex-col items-center justify-center pb-2">
 				<div>Bulgogi</div>
 				<div>Cook Time: 45 min.</div>
 			</div>
@@ -39,7 +39,7 @@
 			<div>Back Information</div>
 			<SeeMoreButton on:click={handleCardFlip}>See Front</SeeMoreButton>
 		</div>
-	</div> -->
+	<!-- </div> -->
 </div>
 
 <style lang="postcss">
