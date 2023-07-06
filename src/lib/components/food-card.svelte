@@ -35,10 +35,10 @@
 			</div>
 			<SeeMoreButton on:click={handleCardFlip}>Read More</SeeMoreButton>
 		</div>
-		<div class="back absolute flex h-full w-full flex-col items-center justify-center">
+		<!-- <div class="back absolute flex h-full w-full flex-col items-center justify-center">
 			<div>Back Information</div>
 			<SeeMoreButton on:click={handleCardFlip}>See Front</SeeMoreButton>
-		</div>
+		</div> -->
 	<!-- </div> -->
 </div>
 
