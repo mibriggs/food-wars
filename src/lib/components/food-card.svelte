@@ -17,7 +17,7 @@
 
 <div class="container flex h-full flex-col items-center justify-center">
 	<div
-		class="card relative flex h-[700px] w-[400px] flex-col rounded-4xl bg-alabaster font-sawarabi text-xl font-bold text-raisin shadow-3xl rotateY-180"
+		class="card relative flex flex-col rounded-4xl bg-alabaster font-sawarabi text-xl font-bold text-raisin shadow-3xl rotateY-180"
 		class:flipped={isFlipped}
 		class:selected={isSelected}
 		on:click={handleCardClicked}
@@ -52,6 +52,8 @@
 		aspect-ratio: 2.5 / 3.5;
 		border-radius: 2em;
 		transition: transform 0.4s;
+		height: 700px;
+		width: 400px;
 		transform-style: preserve-3d;
 		user-select: none;
 		cursor: pointer;

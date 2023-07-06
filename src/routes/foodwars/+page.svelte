@@ -92,5 +92,4 @@
 			<img src={restartIcon} alt="restart" />
 		</div>
 	</a>
-	<!-- </button> -->
 </div>
