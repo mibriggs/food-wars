@@ -49,7 +49,7 @@
 	}
 
 	.card {
-		/* aspect-ratio: 2.5 / 3.5; */
+		aspect-ratio: 2.5 / 3.5;
 		border-radius: 2em;
 		transition: transform 0.4s;
 		transform-style: preserve-3d;
