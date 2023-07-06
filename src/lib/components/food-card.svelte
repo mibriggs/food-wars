@@ -42,7 +42,7 @@
 	</div>
 </div>
 
-<style lang="postcss">
+<style>
 	.container {
 		gap: 1em;
 		perspective: 100vh;
