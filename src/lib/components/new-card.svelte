@@ -8,7 +8,7 @@
 	};
 </script>
 
-<div class="container flex flex-col items-center justify-center h-full">
+<div class="container flex h-full flex-col items-center justify-center">
 	<div
 		class="card relative flex flex-col rounded-4xl bg-alabaster font-sawarabi text-xl font-bold text-raisin shadow-3xl"
 		class:flipped={isFlipped}
@@ -35,7 +35,6 @@
 <style>
 	/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 	.container {
-        height: 100%;
 		background-color: transparent;
 		perspective: 100vh; /* Remove this if you don't want the 3D effect */
 		gap: 1em;

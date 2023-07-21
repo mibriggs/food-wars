@@ -2,6 +2,7 @@
 	import FoodCard from '../../lib/components/food-card.svelte';
 	import restartIcon from '../../lib/assets/restart.svg';
 	import NewCard from '$lib/components/new-card.svelte';
+	import NewNewCard from '$lib/components/new-new-card.svelte';
 
 	const createRandomString = () => {
 		return (Math.random() + 1).toString(36).substring(7);
@@ -77,6 +78,7 @@
 		<FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
 		<!-- <FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} /> -->
 		<NewCard />
+		<NewNewCard />
 	</div>
 
 	<!-- 
