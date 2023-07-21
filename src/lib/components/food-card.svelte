@@ -7,10 +7,10 @@
 	let isFlipped: boolean = false;
 	const dispatch = createEventDispatcher();
 
-	const handleCardFlip = () => {
+	const handleCardFlip = (): void => {
 		isFlipped = !isFlipped;
 	};
-	const handleCardClicked = () => {
+	const handleCardClicked = (): void => {
 		dispatch('cardClicked');
 	};
 </script>

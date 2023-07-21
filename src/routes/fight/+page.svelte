@@ -2,27 +2,27 @@
 	import FoodCard from '../../lib/components/food-card.svelte';
 	import restartIcon from '../../lib/assets/restart.svg';
 
-	const createRandomString = () => {
+	const createRandomString = (): string => {
 		return (Math.random() + 1).toString(36).substring(7);
 	};
-	const createRandomStringArray = (length: number) => {
+	const createRandomStringArray = (length: number): string[] => {
 		const newArray: string[] = [];
 		for (let i = 0; i < length; i++) {
 			newArray.push(createRandomString());
 		}
 		return newArray;
 	};
-	const handleAdd = (indx: number) => {
+	const handleAdd = (indx: number): void => {
 		nextArr = [...nextArr, currArr[indx]];
 		selected_idx += 2;
 	};
-	const updateReferences = () => {
+	const updateReferences = (): void => {
 		currArr = [...nextArr];
 		nextArr = [];
 		selected_idx = 0;
 		next_idx = selected_idx + 1;
 	};
-	const handleSelection = (isRightCard: boolean) => {
+	const handleSelection = (isRightCard: boolean): void => {
 		isRightSelected = isRightCard;
 		isLeftSelected = !isRightCard;
 	};
