@@ -1,6 +1,7 @@
 <script lang="ts">
 	import FoodCard from '../../lib/components/food-card.svelte';
 	import restartIcon from '../../lib/assets/restart.svg';
+	import iosRightIcon from '../../lib/assets/arrow_right_ios.svg';
 
 	const createRandomString = (): string => {
 		return (Math.random() + 1).toString(36).substring(7);
@@ -34,14 +35,23 @@
 	let isLeftSelected: boolean = false;
 	let isRightSelected: boolean = false;
 
+	$: isNextButtonHidden = !isLeftSelected && !isRightSelected;
 	$: next_idx = selected_idx + 1;
 	$: if (selected_idx > currArr.length - 1) {
 		updateReferences();
 	}
 </script>
 
-<div class="flex h-full flex-col items-center gap-11 font-sawarabi">
-	<h1 class="pt-5 text-3xl font-bold">Select the meal you'd prefer to Cook</h1>
+<div class="flex h-full flex-col items-center gap-8 font-sawarabi">
+	<a href="/" class="self-start p-4">
+		<img src={restartIcon} alt="restart" />
+	</a>
+	
+	<div class="flex flex-col items-center justify-center gap-1">
+		<h1 class="text-3xl font-bold">What would you like to eat?</h1>
+		<h2 class="text-xl italic">Please choose one</h2>
+	</div>
+
 	<!-- <div class="flex h-full flex-col items-center justify-center text-3xl">
 		{#if next_idx < currArr.length}
 			{currArr[selected_idx]} vs {currArr[next_idx]}
@@ -82,14 +92,19 @@
 		and once a dish has been it should be shown and say something like?
 		Continue With {dishName} >
 	-->
-
-	<a
-		href="/"
-		class="m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 text-2xl shadow-md"
+	<button
+		class:conditionally-hidden={isNextButtonHidden}
+		class="m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 text-xl shadow-lg"
 	>
 		<div class="flex items-center justify-center gap-2 text-raisin">
-			<div>Restart</div>
-			<img src={restartIcon} alt="restart" />
+			<div>Continue With Bulgogi {isLeftSelected ? '1' : '2'}</div>
+			<img src={iosRightIcon} alt="restart" />
 		</div>
-	</a>
+	</button>
 </div>
+
+<style>
+	.conditionally-hidden {
+		visibility: hidden;
+	}
+</style>
