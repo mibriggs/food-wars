@@ -24,6 +24,7 @@
 		next_idx = selected_idx + 1;
 	};
 	const handleSelection = (isRightCard: boolean): void => {
+		console.log(`Card ${isRightCard? 2 : 1} clicked`);
 		isRightSelected = isRightCard;
 		isLeftSelected = !isRightCard;
 	};
