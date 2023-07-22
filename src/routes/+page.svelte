@@ -1,5 +1,5 @@
 <div class="flex h-full items-center justify-center">
-	<a href="/foodwars" class="w-fit rounded-2xl bg-teal-600 p-4 text-2xl text-snow">Get Started</a>
+	<a href="/fight" class="w-fit rounded-2xl bg-teal-600 p-4 text-2xl text-snow">Get Started</a>
 </div>
 
 <!-- * What should I cook for lunch?
