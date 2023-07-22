@@ -46,7 +46,7 @@
 	<a href="/" class="self-start p-4">
 		<img src={restartIcon} alt="restart" />
 	</a>
-	
+
 	<div class="flex flex-col items-center justify-center gap-1">
 		<h1 class="text-3xl font-bold">What would you like to eat?</h1>
 		<h2 class="text-xl italic">Please choose one</h2>
