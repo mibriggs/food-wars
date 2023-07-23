@@ -22,6 +22,8 @@
 		class:selected={isSelected}
 		on:click={handleCardClicked}
 		on:keypress={handleCardClicked}
+		role="button"
+		tabindex="0"
 	>
 		<div class="front absolute flex h-full w-full flex-col items-center rotateY-180">
 			<img
