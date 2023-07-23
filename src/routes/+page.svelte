@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-    import alarm from '../lib/assets/alarm.svg'
+	import alarm from '../lib/assets/alarm.svg';
+	import StyledNumber from '$lib/components/styled-number.svelte';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
@@ -26,51 +27,53 @@
 		return cleanUpTypewriter;
 	});
 
-    const getHours = () => {
-        const MINUTES_IN_HOUR = 60;
-        const hours = Math.trunc(timeInMinutes / MINUTES_IN_HOUR);
-        const minutes = timeInMinutes % MINUTES_IN_HOUR;
-        
-        if (timeInMinutes === 60) {
-            return '1 Hour';
-        }
-        else if (timeInMinutes % MINUTES_IN_HOUR == 0) {
-            return `${hours} Hours`;
-        }
-        return `${hours} ${hours === 1? 'Hour' : 'Hours'}, ${minutes} minutes`;
-    };
+	const getHours = () => {
+		const MINUTES_IN_HOUR = 60;
+		const hours = Math.trunc(timeInMinutes / MINUTES_IN_HOUR);
+		const minutes = timeInMinutes % MINUTES_IN_HOUR;
+		let timeInStringFormat: string = '';
+
+		if (timeInMinutes === 60) {
+			timeInStringFormat = '1 Hour';
+		} else if (timeInMinutes % MINUTES_IN_HOUR == 0) {
+			timeInStringFormat = `${hours} Hours`;
+		} else {
+			timeInStringFormat = `${hours} ${hours === 1 ? 'Hour' : 'Hours'}, ${minutes} minutes`;
+		}
+		return timeInStringFormat;
+	};
 
 	$: timeLabel = timeInMinutes < 60 ? `${timeInMinutes} Minutes` : getHours();
 </script>
 
-<div class="flex h-screen flex-col gap-8 p-16 font-sawarabi text-raisin">
+<div class="flex h-screen flex-col gap-8 px-40 py-16 font-sawarabi text-raisin">
 	<div class="flex flex-col gap-1">
-		<h1 class="text-3xl font-bold">{typedSoFar}</h1>
+		<h1 class="text-4xl font-bold">{typedSoFar}</h1>
 		<h2 class="text-xl italic">
 			An interactive web app to help you decide what to cook when you have no idea
 		</h2>
 	</div>
 
 	<div>
-        <div class="flex flex-col text-lg gap-5">
-            <div>1. How much time do you have?</div>
-            <div class="flex flex-col gap-0.5">
-                <label for="time" class="self-center">
-                    <div class="flex gap-2 justify-center items-center">
-                        <img src={alarm} alt="clock" />
-                        <div>{timeLabel}</div>
-                    </div>
-                </label>
-                <input
-                    type="range"
-                    min="5"
-                    max="480"
-                    step="5"
-                    id="time"
-                    name="time"
-                    bind:value={timeInMinutes}
-                />
-            </div>
+		<div class="flex flex-col gap-5 text-lg">
+			<StyledNumber index={1}>How much time do you have?</StyledNumber>
+			<div class="flex flex-col gap-2">
+				<label for="time" class="self-center">
+					<div class="flex items-center justify-center gap-2">
+						<img src={alarm} alt="clock" />
+						<div>{timeLabel}</div>
+					</div>
+				</label>
+				<input
+					type="range"
+					min="5"
+					max="480"
+					step="5"
+					id="time"
+					name="time"
+					bind:value={timeInMinutes}
+				/>
+			</div>
 		</div>
 	</div>
 
@@ -112,3 +115,73 @@
     * Link to recipe?
     * Link to TikTok videos for recipe? 
 -->
+
+<style lang="postcss">
+	/* Getting rid of base range styling */
+	input[type='range'] {
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		background: transparent;
+		cursor: pointer;
+		outline: none;
+	}
+
+	/* Webkit styling (AKA Chrome, Safari, and Edge) */
+	input[type='range']::-webkit-slider-runnable-track {
+		-webkit-appearance: none;
+		background: #e7ebe4;
+		height: 20px;
+		border-radius: 16px;
+	}
+	input[type='range']::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		height: 32px;
+		width: 32px;
+		background: #fcf7f8;
+		margin-top: -6px;
+		border: solid;
+		border-radius: 9999px;
+		border-width: 2px;
+		border-color: #332e3c;
+	}
+
+	/* Firefox Styling */
+	input[type='range']::-moz-range-track {
+		-moz-appearance: none;
+		background: #e7ebe4;
+		height: 20px;
+		border-radius: 16px;
+	}
+
+	input[type='range']::-moz-range-thumb {
+		-moz-appearance: none;
+		appearance: none;
+		height: 32px;
+		width: 32px;
+		background: #fcf7f8;
+		border: solid;
+		border-radius: 9999px;
+		border-width: 2px;
+		border-color: #332e3c;
+	}
+
+	/* Styling for idek what */
+	input[type='range']::-ms-track {
+		appearance: none;
+		background: #e7ebe4;
+		height: 20px;
+		border-radius: 16px;
+	}
+	input[type='range']::-ms-thumb {
+		appearance: none;
+		height: 32px;
+		width: 32px;
+		background: #fcf7f8;
+		border: solid;
+		border-radius: 9999px;
+		border-width: 2px;
+		border-color: #332e3c;
+	}
+</style>

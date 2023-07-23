@@ -1,0 +1,14 @@
+<script lang="ts">
+	export let index: number;
+</script>
+
+<div class="flex items-center gap-2">
+	<div
+		class="flex h-9 w-9 items-center justify-center rounded-full bg-teal-600 text-center text-lg font-bold text-snow"
+	>
+		{index}
+	</div>
+	<div class="text-xl font-semibold">
+		<slot />
+	</div>
+</div>

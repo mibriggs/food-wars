@@ -103,7 +103,7 @@
 	</button>
 </div>
 
-<style>
+<style lang="postcss">
 	.conditionally-hidden {
 		visibility: hidden;
 	}
