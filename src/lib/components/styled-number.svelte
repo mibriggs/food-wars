@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let index: number;
+	export let index: string;
 </script>
 
 <div class="flex items-center gap-2">

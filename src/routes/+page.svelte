@@ -2,12 +2,26 @@
 	import { onMount } from 'svelte';
 	import alarm from '../lib/assets/alarm.svg';
 	import StyledNumber from '$lib/components/styled-number.svelte';
+	import StyledDropdown from '$lib/components/styled-dropdown.svelte';
+	import BreakfastIcon from '../lib/assets/breakfast.svg';
+	import LunchIcon from '../lib/assets/lunch.svg';
+	import DinnerIcon from '../lib/assets/dinner.svg';
+	import SnackIcon from '../lib/assets/snack.svg';
+
+	import type { Option } from '$lib/types/types';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
+	const options: Option[] = [
+		{ value: 'breakfast', message: 'Breakfast', imageSource: BreakfastIcon },
+		{ value: 'lunch', message: 'Lunch', imageSource: LunchIcon },
+		{ value: 'dinner', message: 'Dinner', imageSource: DinnerIcon },
+		{ value: 'snack', message: 'Snack', imageSource: SnackIcon }
+	];
 	let typedSoFar: string = '';
 	let index: number = 0;
-	let timeInMinutes: number = 5;
+	let timeInMinutes: number = 15;
+	let mealType: string;
 
 	const setTypewriterMessage = () => {
 		if (index < typewriterMessage.length) {
@@ -43,6 +57,10 @@
 		return timeInStringFormat;
 	};
 
+	const handleDropdownValue = (event: CustomEvent<any>) => {
+		mealType = event.detail.value;
+	};
+
 	$: timeLabel = timeInMinutes < 60 ? `${timeInMinutes} Minutes` : getHours();
 </script>
 
@@ -54,9 +72,9 @@
 		</h2>
 	</div>
 
-	<div>
+	<div class="flex flex-col gap-14">
 		<div class="flex flex-col gap-5 text-lg">
-			<StyledNumber index={1}>How much time do you have?</StyledNumber>
+			<StyledNumber index="1">How much time do you have?</StyledNumber>
 			<div class="flex flex-col gap-2">
 				<label for="time" class="self-center">
 					<div class="flex items-center justify-center gap-2">
@@ -66,14 +84,19 @@
 				</label>
 				<input
 					type="range"
-					min="5"
+					min="15"
 					max="480"
-					step="5"
+					step="15"
 					id="time"
 					name="time"
 					bind:value={timeInMinutes}
 				/>
 			</div>
+		</div>
+
+		<div class="flex flex-col gap-3 text-lg">
+			<StyledNumber index="2">What kind of food do you want?</StyledNumber>
+			<StyledDropdown {options} on:selectionMade={handleDropdownValue} />
 		</div>
 	</div>
 
