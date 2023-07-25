@@ -8,7 +8,7 @@
 	>
 		{index}
 	</div>
-	<div class="text-xl font-semibold">
+	<div class="text-md font-semibold md:text-xl">
 		<slot />
 	</div>
 </div>

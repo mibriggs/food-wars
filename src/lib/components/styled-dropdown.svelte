@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade, slide } from 'svelte/transition';
 	import type { Option } from '$lib/types/types';
 	import { createEventDispatcher } from 'svelte';
 	import DownArrowIcon from '../assets/arrow_drop_down.svg';
@@ -19,13 +20,14 @@
 	};
 </script>
 
-<div class="flex w-1/4 flex-col gap-2 rounded-xl text-left">
+<div
+	class="flex w-full flex-col gap-2 rounded-lg text-left font-bold tracking-wider md:w-1/2 xl:w-1/4"
+>
 	<button
-		class={`text-bold rounded-xl ${
-			isOptionSelected ? 'bg-alabaster' : 'bg-stone-200'
-		} p-4 text-left text-xl focus:border-4 focus:border-solid focus:border-raisin`}
+		class={`text-bold rounded-lg ${
+			isOptionSelected && !isDropDownOpen ? 'border-4 border-teal-600 bg-alabaster' : 'bg-stone-200'
+		} border-4 border-transparent p-4 text-left text-lg duration-500 active:border-teal-600 active:text-teal-600 lg:text-xl`}
 		on:click={() => (isDropDownOpen = !isDropDownOpen)}
-		on:change={() => console.log('state changed')}
 	>
 		<div class="flex justify-between">
 			<div>{dropdownText}</div>
@@ -33,10 +35,10 @@
 		</div>
 	</button>
 	{#if isDropDownOpen}
-		<div class="flex flex-col gap-2 rounded-xl bg-stone-200 p-4">
+		<div class="flex flex-col gap-2 rounded-lg bg-stone-200 p-4" in:slide out:slide>
 			{#each options as option}
 				<button
-					class="flex items-center justify-start gap-3 rounded-xl p-2 hover:border-l-4 hover:border-solid hover:border-teal-600 hover:bg-alabaster"
+					class="flex items-center justify-start gap-3 rounded-r-lg border-l-4 p-2 hover:border-teal-600 hover:bg-alabaster"
 					on:click={() => handleDropDownOptionClick(option)}
 				>
 					<img src={option.imageSource} alt={option.value} />

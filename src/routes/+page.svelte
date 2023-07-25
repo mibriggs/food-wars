@@ -64,16 +64,16 @@
 	$: timeLabel = timeInMinutes < 60 ? `${timeInMinutes} Minutes` : getHours();
 </script>
 
-<div class="flex h-screen flex-col gap-8 px-40 py-16 font-sawarabi text-raisin">
+<div class="flex h-screen flex-col gap-8 px-8 py-16 font-sawarabi text-raisin md:px-40">
 	<div class="flex flex-col gap-1">
-		<h1 class="text-4xl font-bold">{typedSoFar}</h1>
-		<h2 class="text-xl italic">
+		<h1 class="text-2xl font-bold md:text-4xl">{typedSoFar}</h1>
+		<h2 class="text-md italic md:text-xl">
 			An interactive web app to help you decide what to cook when you have no idea
 		</h2>
 	</div>
 
 	<div class="flex flex-col gap-14">
-		<div class="flex flex-col gap-5 text-lg">
+		<div class="text-md flex flex-col gap-5 md:text-lg">
 			<StyledNumber index="1">How much time do you have?</StyledNumber>
 			<div class="flex flex-col gap-2">
 				<label for="time" class="self-center">
@@ -94,7 +94,7 @@
 			</div>
 		</div>
 
-		<div class="flex flex-col gap-3 text-lg">
+		<div class="text-md flex flex-col gap-3 md:text-lg">
 			<StyledNumber index="2">What kind of food do you want?</StyledNumber>
 			<StyledDropdown {options} on:selectionMade={handleDropdownValue} />
 		</div>
