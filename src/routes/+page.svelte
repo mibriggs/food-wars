@@ -7,7 +7,6 @@
 	import LunchIcon from '../lib/assets/lunch.svg';
 	import DinnerIcon from '../lib/assets/dinner.svg';
 	import SnackIcon from '../lib/assets/snack.svg';
-
 	import type { Option } from '$lib/types/types';
 
 	const TIMEOUT_LENGTH: number = 60;
@@ -65,8 +64,8 @@
 </script>
 
 <div class="flex h-screen flex-col gap-8 px-8 py-16 font-sawarabi text-raisin md:px-40">
-	<div class="flex flex-col gap-1">
-		<h1 class="text-2xl font-bold md:text-4xl">{typedSoFar}</h1>
+	<div class="flex flex-col gap-2">
+		<h1 class="text-2xl font-bold md:text-4xl lg:text-5xl">{typedSoFar}</h1>
 		<h2 class="text-md italic md:text-xl">
 			An interactive web app to help you decide what to cook when you have no idea
 		</h2>
@@ -98,17 +97,21 @@
 			<StyledNumber index="2">What kind of food do you want?</StyledNumber>
 			<StyledDropdown {options} on:selectionMade={handleDropdownValue} />
 		</div>
+
+		<!-- <div class="text-md flex flex-col gap-3 md:text-lg">
+			<StyledNumber index="3">Caloric Value?</StyledNumber>
+		</div> -->
 	</div>
 
 	<!-- <div>
 		<form>
 			<ol class="list-decimal">
-				<li>What type of meal are you trying to cook</li>
+				<li>What type of meal are you trying to cook</li> DONE
+				<li>How much time do you have?</li> DONE
 				<li>Any specific cuisine?</li>
 				<li>What ingredients do you have?</li>
 				<li>Any allergies?</li>
 				<li>Caloric Value?</li>
-				<li>How much time do you have?</li>
 				<li>How many options do you want?</li>
 			</ol>
 		</form>

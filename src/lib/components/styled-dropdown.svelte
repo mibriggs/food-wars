@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { fade, slide } from 'svelte/transition';
-	import type { Option } from '$lib/types/types';
+	import { slide } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
 	import DownArrowIcon from '../assets/arrow_drop_down.svg';
 	import UpArrowIcon from '../assets/arrow_drop_up.svg';
+	import type { Option } from '$lib/types/types';
 
 	export let options: Option[];
 
@@ -21,7 +21,7 @@
 </script>
 
 <div
-	class="flex w-full flex-col gap-2 rounded-lg text-left font-bold tracking-wider md:w-1/2 xl:w-1/4"
+	class="flex w-full flex-col gap-2 rounded-lg text-left font-bold tracking-wider md:w-1/2 lg:w-1/3 xl:w-1/4"
 >
 	<button
 		class={`text-bold rounded-lg ${
@@ -48,14 +48,3 @@
 		</div>
 	{/if}
 </div>
-
-<!-- <select name={id} {id}>
-	{#each options as option}
-		<option value={option.value}>
-			<div class="flex items-center justify-center gap-2">
-				<img src={option.imageSource} alt={option.value} />
-				<div>{option.message}</div>
-			</div>
-		</option>
-	{/each}
-</select> -->
