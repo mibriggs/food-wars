@@ -18,6 +18,8 @@
 		isOptionSelected = true;
 		dispatch('selectionMade', { value: dropdownValue.value });
 	};
+
+	$: dropdownClosedAndChoiceMade = isOptionSelected && !isDropDownOpen;
 </script>
 
 <div
@@ -25,8 +27,10 @@
 >
 	<button
 		class={`text-bold rounded-lg ${
-			isOptionSelected && !isDropDownOpen ? 'border-4 border-teal-600 bg-alabaster' : 'bg-stone-200'
-		} border-4 border-transparent p-4 text-left text-lg duration-500 active:border-teal-600 active:text-teal-600 lg:text-xl`}
+			dropdownClosedAndChoiceMade ? ' bg-alabaster' : 'bg-stone-200'
+		} border-4 ${
+			dropdownClosedAndChoiceMade ? 'border-teal-600' : 'border-transparent'
+		} p-4 text-left text-lg duration-500 active:border-teal-600 active:text-teal-600 lg:text-xl`}
 		on:click={() => (isDropDownOpen = !isDropDownOpen)}
 	>
 		<div class="flex justify-between">
