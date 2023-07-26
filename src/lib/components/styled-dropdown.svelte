@@ -23,7 +23,7 @@
 </script>
 
 <div
-	class="flex w-full flex-col gap-2 rounded-lg text-left font-bold tracking-wider md:w-1/2 lg:w-1/3 xl:w-1/4"
+	class="flex w-full flex-col gap-2 rounded-lg text-left font-bold tracking-wider md:w-1/2 lg:w-2/5 xl:w-1/4"
 >
 	<button
 		class={`text-bold rounded-lg ${

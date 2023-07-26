@@ -8,6 +8,7 @@
 	import DinnerIcon from '../lib/assets/dinner.svg';
 	import SnackIcon from '../lib/assets/snack.svg';
 	import type { Option } from '$lib/types/types';
+	import StyledNumberInput from '$lib/components/styled-number-input.svelte';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
@@ -21,6 +22,7 @@
 	let index: number = 0;
 	let timeInMinutes: number = 15;
 	let mealType: string;
+	let numberOfOptions: number = 4;
 
 	const setTypewriterMessage = () => {
 		if (index < typewriterMessage.length) {
@@ -101,6 +103,12 @@
 		<!-- <div class="text-md flex flex-col gap-3 md:text-lg">
 			<StyledNumber index="3">Caloric Value?</StyledNumber>
 		</div> -->
+
+		<div class="text-md flex flex-col gap-3 md:text-lg">
+			<StyledNumber index="7">How many options do you want?</StyledNumber>
+			<!-- <input type="number" min="4" max="64" bind:value={numberOfOptions} on:keypress|preventDefault on:keydown|preventDefault class="p-4 rounded-lg bg-stone-200 w-1/3 md:w-1/12 cursor-pointer border-4 focus:border-teal-600 outline-none" /> -->
+			<StyledNumberInput min={4} max={64} bind:value={numberOfOptions} />
+		</div>
 	</div>
 
 	<!-- <div>
