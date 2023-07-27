@@ -1,7 +1,9 @@
 <script lang="ts">
 	import FoodCard from '../../lib/components/food-card.svelte';
-	import restartIcon from '../../lib/assets/restart.svg';
-	import iosRightIcon from '../../lib/assets/arrow_right_ios.svg';
+	import RestartIcon from '../../lib/assets/restart.svg';
+	import IosRightIcon from '../../lib/assets/arrow_right_ios.svg';
+	import ForwardArrowIcon from '../../lib/assets/arrow_forward_ios.svg';
+	import BackwardArrowIcon from '../../lib/assets/arrow_back_ios.svg'
 
 	const createRandomString = (): string => {
 		return (Math.random() + 1).toString(36).substring(7);
@@ -34,6 +36,9 @@
 	let nextArr: string[] = [];
 	let isLeftSelected: boolean = false;
 	let isRightSelected: boolean = false;
+	let isOnFirstCard: boolean = true;
+	let screenWidth: number;
+	const IPAD_PORTRAIT_WIDTH: number = 820;
 
 	$: isNextButtonHidden = !isLeftSelected && !isRightSelected;
 	$: next_idx = selected_idx + 1;
@@ -42,13 +47,14 @@
 	}
 </script>
 
+<svelte:window bind:innerWidth={screenWidth} />
 <div class="flex h-full flex-col items-center gap-8 font-sawarabi">
 	<a href="/" class="self-start p-4">
-		<img src={restartIcon} alt="restart" />
+		<img src={RestartIcon} alt="restart" />
 	</a>
 
 	<div class="flex flex-col items-center justify-center gap-1">
-		<h1 class="text-3xl font-bold">What would you like to eat?</h1>
+		<h1 class=" text-2xl font-bold md:text-3xl">What would you like to eat?</h1>
 		<h2 class="text-xl italic">Please choose one</h2>
 	</div>
 
@@ -82,10 +88,34 @@
 			</div>
 		{/if}
 	</div> -->
-	<div class="flex flex-row items-center gap-32">
-		<FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
-		<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} />
-	</div>
+	{#if screenWidth > IPAD_PORTRAIT_WIDTH}
+		<div class="flex flex-row items-center gap-32">
+			<FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
+			<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} />
+		</div>
+	{:else}
+		<div class="flex flex-col items-center justify-center">
+			<FoodCard
+				isSelected={isLeftSelected}
+				on:cardClicked={() => handleSelection(false)}
+				isHidden={isOnFirstCard}
+			/>
+			<FoodCard
+				isSelected={isRightSelected}
+				on:cardClicked={() => handleSelection(true)}
+				isHidden={!isOnFirstCard}
+			/>
+			<div class="flex items-center justify-center py-5 font-sawarabi text-2xl gap-2">
+				<button on:click={() => isOnFirstCard = !isOnFirstCard}>
+					<img src={BackwardArrowIcon} alt="">
+				</button>
+				{isOnFirstCard? 1 : 2}/2
+				<button on:click={() => isOnFirstCard = !isOnFirstCard}>
+					<img src={ForwardArrowIcon} alt=""/>
+				</button>
+			</div>
+		</div>
+	{/if}
 
 	<!-- 
 		We Want a button Here basically it should be hidden by default
@@ -98,7 +128,7 @@
 	>
 		<div class="flex items-center justify-center gap-2 text-raisin">
 			<div>Continue With Bulgogi {isLeftSelected ? '1' : '2'}</div>
-			<img src={iosRightIcon} alt="restart" />
+			<img src={IosRightIcon} alt="restart" />
 		</div>
 	</button>
 </div>
