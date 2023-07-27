@@ -16,15 +16,15 @@
 </script>
 
 <div
-	class="flex w-1/3 h-16 cursor-pointer items-center justify-between rounded-lg bg-stone-200 p-4 md:w-3/12 lg:w-2/12 xl:w-1/12"
+	class="flex h-16 w-1/3 cursor-pointer items-center justify-between rounded-lg bg-stone-200 p-4 md:w-3/12 lg:w-2/12 xl:w-1/12"
 >
-	<div class="font-sawarabi font-bold text-2xl text-raisin">{value}</div>
+	<div class="font-sawarabi text-2xl font-bold text-raisin">{value}</div>
 	<div class="flex flex-col content-center gap-3">
-		<button on:click={increment} >
-            <UpArrow size="8" />
+		<button on:click={increment}>
+			<UpArrow size="8" />
 		</button>
 		<button on:click={decrement}>
-            <DownArrow size="8"/>
+			<DownArrow size="8" />
 		</button>
 	</div>
 </div>
