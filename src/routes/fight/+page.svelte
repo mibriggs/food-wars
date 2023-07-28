@@ -31,11 +31,7 @@
 	};
 
 	const setUpCards = () => {
-		console.log('Set up cards function called')
-		if (isLeftSelected) {
-			isOnSecondCard = false;
-		}
-		else if (isRightSelected) {
+		if (isRightSelected) {
 			isOnSecondCard = true;
 		}
 		else {
@@ -49,7 +45,7 @@
 	let nextArr: string[] = [];
 	let isLeftSelected: boolean = false;
 	let isRightSelected: boolean = false;
-	let isOnSecondCard: boolean = true;
+	let isOnSecondCard: boolean = false;
 	let screenWidth: number;
 	const MAX_WIDTH: number = 1000;
 
