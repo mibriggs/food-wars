@@ -19,7 +19,7 @@
 	<button class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-teal-600" on:click={decrement}>
 		<img src={MinusIcon} alt="minus button" class="hovered"/>
 	</button>
-	<div>{value}</div>
+	<div class="text-raisin">{value}</div>
 	<button class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-teal-600" on:click={increment}>
 		<img src={AddIcon} alt="plus button" class="hovered"/>
 	</button>
