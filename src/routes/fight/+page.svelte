@@ -31,11 +31,7 @@
 	};
 
 	const setUpCards = () => {
-		console.log('Set up cards function called')
 		if (isRightSelected) {
-			isOnSecondCard = true;
-		}
-		else if (isRightSelected) {
 			isOnSecondCard = true;
 		}
 		else {
@@ -59,7 +55,7 @@
 		updateReferences();
 	}
 
-	$: if (screenWidth > MAX_WIDTH) {
+	$: if (screenWidth < MAX_WIDTH) {
 		setUpCards();
 	}
 </script>
