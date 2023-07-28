@@ -30,6 +30,19 @@
 		isLeftSelected = !isRightCard;
 	};
 
+	const setUpCards = () => {
+		console.log('Set up cards function called')
+		if (isLeftSelected) {
+			isOnSecondCard = false;
+		}
+		else if (isRightSelected) {
+			isOnSecondCard = true;
+		}
+		else {
+			isOnSecondCard = false;
+		}
+	}
+
 	let currArr: string[] = createRandomStringArray(10);
 	let selected_idx: number = 0;
 	let next_idx: number;
@@ -38,12 +51,16 @@
 	let isRightSelected: boolean = false;
 	let isOnSecondCard: boolean = true;
 	let screenWidth: number;
-	const IPAD_PORTRAIT_WIDTH: number = 820;
+	const MAX_WIDTH: number = 1000;
 
 	$: isNextButtonHidden = !isLeftSelected && !isRightSelected;
 	$: next_idx = selected_idx + 1;
 	$: if (selected_idx > currArr.length - 1) {
 		updateReferences();
+	}
+
+	$: if (screenWidth > MAX_WIDTH) {
+		setUpCards();
 	}
 </script>
 
@@ -88,7 +105,7 @@
 			</div>
 		{/if}
 	</div> -->
-	{#if screenWidth > IPAD_PORTRAIT_WIDTH}
+	{#if screenWidth > MAX_WIDTH}
 		<div class="flex flex-row items-center gap-32">
 			<FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
 			<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} />
@@ -124,7 +141,7 @@
 	-->
 	<button
 		class:conditionally-hidden={isNextButtonHidden}
-		class="m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 text-xl shadow-lg"
+		class="m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 text-md sm:text-xl shadow-lg"
 	>
 		<div class="flex items-center justify-center gap-2 text-raisin">
 			<div>Continue With Bulgogi {isLeftSelected ? '1' : '2'}</div>
