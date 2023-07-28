@@ -36,7 +36,7 @@
 	let nextArr: string[] = [];
 	let isLeftSelected: boolean = false;
 	let isRightSelected: boolean = false;
-	let isOnFirstCard: boolean = true;
+	let isOnSecondCard: boolean = true;
 	let screenWidth: number;
 	const IPAD_PORTRAIT_WIDTH: number = 820;
 
@@ -98,19 +98,19 @@
 			<FoodCard
 				isSelected={isLeftSelected}
 				on:cardClicked={() => handleSelection(false)}
-				isHidden={isOnFirstCard}
+				isHidden={isOnSecondCard}
 			/>
 			<FoodCard
 				isSelected={isRightSelected}
 				on:cardClicked={() => handleSelection(true)}
-				isHidden={!isOnFirstCard}
+				isHidden={!isOnSecondCard}
 			/>
 			<div class="flex items-center justify-center py-5 font-sawarabi text-2xl gap-2">
-				<button on:click={() => isOnFirstCard = !isOnFirstCard}>
+				<button on:click={() => isOnSecondCard = !isOnSecondCard}>
 					<img src={BackwardArrowIcon} alt="">
 				</button>
-				{isOnFirstCard? 1 : 2}/2
-				<button on:click={() => isOnFirstCard = !isOnFirstCard}>
+				{isOnSecondCard? 2 : 1}/2
+				<button on:click={() => isOnSecondCard = !isOnSecondCard}>
 					<img src={ForwardArrowIcon} alt=""/>
 				</button>
 			</div>
