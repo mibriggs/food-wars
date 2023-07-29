@@ -8,4 +8,4 @@ export type RadioOption = {
 	value: string;
 	heading: string;
 	subHeading: string;
-}
+};

@@ -20,9 +20,9 @@
 		{ value: 'snack', message: 'Snack', imageSource: SnackIcon }
 	];
 	const radioOptions: RadioOption[] = [
-		{value: "low", heading: "Low", subHeading: "Less than 500 calories"},
-		{value: "medium", heading: "Medium", subHeading: "Between 500 and 800 calories"},
-		{value: "high", heading: "High", subHeading: "Over than 800 calories"}
+		{ value: 'low', heading: 'Low', subHeading: 'Less than 500 calories' },
+		{ value: 'medium', heading: 'Medium', subHeading: 'Between 500 and 800 calories' },
+		{ value: 'high', heading: 'High', subHeading: 'Over than 800 calories' }
 	];
 
 	let typedSoFar: string = '';
@@ -109,14 +109,13 @@
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
 			<StyledNumber index="3">Caloric Value?</StyledNumber>
-			<RadioGroup radioOptions={radioOptions}/>
+			<RadioGroup {radioOptions} />
 		</div>
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
 			<StyledNumber index="7">How many options do you want?</StyledNumber>
 			<NumberInput min={4} max={64} bind:value={numberOfOptions} />
 		</div>
-
 	</div>
 
 	<!-- <div>
