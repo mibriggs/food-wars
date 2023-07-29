@@ -3,7 +3,7 @@
 	import RestartIcon from '../../lib/assets/restart.svg';
 	import IosRightIcon from '../../lib/assets/arrow_right_ios.svg';
 	import ForwardArrowIcon from '../../lib/assets/arrow_forward_ios.svg';
-	import BackwardArrowIcon from '../../lib/assets/arrow_back_ios.svg'
+	import BackwardArrowIcon from '../../lib/assets/arrow_back_ios.svg';
 
 	const createRandomString = (): string => {
 		return (Math.random() + 1).toString(36).substring(7);
@@ -33,11 +33,10 @@
 	const setUpCards = () => {
 		if (isRightSelected) {
 			isOnSecondCard = true;
-		}
-		else {
+		} else {
 			isOnSecondCard = false;
 		}
-	}
+	};
 
 	let currArr: string[] = createRandomStringArray(10);
 	let selected_idx: number = 0;
@@ -118,13 +117,13 @@
 				on:cardClicked={() => handleSelection(true)}
 				isHidden={!isOnSecondCard}
 			/>
-			<div class="flex items-center justify-center py-5 font-sawarabi text-2xl gap-2">
-				<button on:click={() => isOnSecondCard = !isOnSecondCard}>
-					<img src={BackwardArrowIcon} alt="">
+			<div class="flex items-center justify-center gap-2 py-5 font-sawarabi text-2xl">
+				<button on:click={() => (isOnSecondCard = !isOnSecondCard)}>
+					<img src={BackwardArrowIcon} alt="" />
 				</button>
-				{isOnSecondCard? 2 : 1}/2
-				<button on:click={() => isOnSecondCard = !isOnSecondCard}>
-					<img src={ForwardArrowIcon} alt=""/>
+				{isOnSecondCard ? 2 : 1}/2
+				<button on:click={() => (isOnSecondCard = !isOnSecondCard)}>
+					<img src={ForwardArrowIcon} alt="" />
 				</button>
 			</div>
 		</div>
@@ -137,7 +136,7 @@
 	-->
 	<button
 		class:conditionally-hidden={isNextButtonHidden}
-		class="m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 text-md sm:text-xl shadow-lg"
+		class="text-md m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 shadow-lg sm:text-xl"
 	>
 		<div class="flex items-center justify-center gap-2 text-raisin">
 			<div>Continue With Bulgogi {isLeftSelected ? '1' : '2'}</div>

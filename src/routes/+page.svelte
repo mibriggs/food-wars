@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import alarm from '../lib/assets/alarm.svg';
 	import StyledNumber from '$lib/components/styled-number.svelte';
 	import StyledDropdown from '$lib/components/styled-dropdown.svelte';
@@ -7,8 +6,9 @@
 	import LunchIcon from '../lib/assets/lunch.svg';
 	import DinnerIcon from '../lib/assets/dinner.svg';
 	import SnackIcon from '../lib/assets/snack.svg';
-	import type { Option } from '$lib/types/types';
 	import NumberInput from '$lib/components/number-input.svelte';
+	import { onMount } from 'svelte';
+	import type { Option } from '$lib/types/types';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
@@ -100,13 +100,9 @@
 			<StyledDropdown {options} on:selectionMade={handleDropdownValue} />
 		</div>
 
-		<!-- <div class="text-md flex flex-col gap-3 md:text-lg">
-			<StyledNumber index="3">Caloric Value?</StyledNumber>
-		</div> -->
-
 		<div class="text-md flex flex-col gap-3 md:text-lg">
 			<StyledNumber index="7">How many options do you want?</StyledNumber>
-			<NumberInput min={4} max={64} bind:value={numberOfOptions}  />
+			<NumberInput min={4} max={64} bind:value={numberOfOptions} />
 		</div>
 	</div>
 
@@ -115,11 +111,11 @@
 			<ol class="list-decimal">
 				<li>What type of meal are you trying to cook</li> DONE
 				<li>How much time do you have?</li> DONE
+				<li>How many options do you want?</li> DONE
 				<li>Any specific cuisine?</li>
 				<li>What ingredients do you have?</li>
 				<li>Any allergies?</li>
 				<li>Caloric Value?</li>
-				<li>How many options do you want?</li>
 			</ol>
 		</form>
 	</div> -->

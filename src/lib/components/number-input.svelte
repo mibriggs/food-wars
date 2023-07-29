@@ -15,13 +15,21 @@
 	};
 </script>
 
-<div class="flex w-52 items-center text-2xl justify-between rounded-lg p-3 bg-stone-200 border-teal-600">
-	<button class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-teal-600" on:click={decrement}>
-		<img src={MinusIcon} alt="minus button" class="hovered"/>
+<div
+	class="flex w-52 items-center justify-between rounded-lg border-teal-600 bg-stone-200 p-3 text-2xl"
+>
+	<button
+		class="flex h-9 w-9 items-center justify-center rounded-full hover:bg-teal-600"
+		on:click={decrement}
+	>
+		<img src={MinusIcon} alt="minus button" class="hovered" />
 	</button>
 	<div class="text-raisin">{value}</div>
-	<button class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-teal-600" on:click={increment}>
-		<img src={AddIcon} alt="plus button" class="hovered"/>
+	<button
+		class="flex h-9 w-9 items-center justify-center rounded-full hover:bg-teal-600"
+		on:click={increment}
+	>
+		<img src={AddIcon} alt="plus button" class="hovered" />
 	</button>
 </div>
 
