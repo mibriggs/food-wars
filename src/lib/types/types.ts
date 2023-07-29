@@ -3,3 +3,9 @@ export type Option = {
 	imageSource: string;
 	message: string;
 };
+
+export type RadioOption = {
+	value: string;
+	heading: string;
+	subHeading: string;
+}
