@@ -29,9 +29,10 @@
 	let index: number = 0;
 	let timeInMinutes: number = 15;
 	let mealType: string;
+	let caloricChoice: string;
 	let numberOfOptions: number = 4;
 
-	const setTypewriterMessage = () => {
+	const setTypewriterMessage = (): void => {
 		if (index < typewriterMessage.length) {
 			typedSoFar += typewriterMessage.charAt(index);
 			index++;
@@ -39,7 +40,7 @@
 		}
 	};
 
-	const cleanUpTypewriter = () => {
+	const cleanUpTypewriter = (): void => {
 		typedSoFar = '';
 		index = 0;
 	};
@@ -49,7 +50,7 @@
 		return cleanUpTypewriter;
 	});
 
-	const getHours = () => {
+	const getHours = (): string => {
 		const MINUTES_IN_HOUR = 60;
 		const hours = Math.trunc(timeInMinutes / MINUTES_IN_HOUR);
 		const minutes = timeInMinutes % MINUTES_IN_HOUR;
@@ -65,10 +66,14 @@
 		return timeInStringFormat;
 	};
 
-	const handleDropdownValue = (event: CustomEvent<any>) => {
+	const handleDropdownValue = (event: CustomEvent<{value: string}>): void => {
 		mealType = event.detail.value;
 	};
-
+	
+	const handleRadioValue = (event: CustomEvent<{value: string}>): void => {
+		caloricChoice = event.detail.value;
+	}
+	
 	$: timeLabel = timeInMinutes < 60 ? `${timeInMinutes} Minutes` : getHours();
 </script>
 
@@ -109,7 +114,7 @@
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
 			<StyledNumber index="3">Caloric Value?</StyledNumber>
-			<RadioGroup {radioOptions} />
+			<RadioGroup {radioOptions} on:radioPicked={handleRadioValue}/>
 		</div>
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">

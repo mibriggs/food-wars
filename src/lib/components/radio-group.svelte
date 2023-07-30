@@ -1,8 +1,15 @@
 <script lang="ts">
 	import type { RadioOption } from '$lib/types/types';
+	import { createEventDispatcher } from 'svelte';
 
-	let selectedIndex: number = -1;
 	export let radioOptions: RadioOption[] = [];
+    const dispatch = createEventDispatcher();
+	let selectedIndex: number = -1;
+
+    const handleRadioOptionPicked = (optionValue: string, optionIndex: number) => {
+        selectedIndex = optionIndex;
+        dispatch('radioPicked', {value: optionValue});
+    }
 </script>
 
 <!-- State needs to be passed up + not as responsive as I'd like -->
@@ -11,7 +18,7 @@
 		<button
 			class="flex w-2/5 flex-col items-center justify-center rounded-xl border-[3px] border-stone-200 p-4"
 			class:highlighted-container={selectedIndex === index}
-			on:click={() => (selectedIndex = index)}
+			on:click={() => handleRadioOptionPicked(option.value, index)}
 		>
 			<div
 				class=" flex h-5 w-5 items-center justify-center self-start rounded-full border-[1px]"
