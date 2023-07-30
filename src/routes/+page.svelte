@@ -124,10 +124,11 @@
 				<li>What type of meal are you trying to cook</li> DONE
 				<li>How much time do you have?</li> DONE
 				<li>How many options do you want?</li> DONE
+				<li>Caloric Value?</li> DONE
 				<li>Any specific cuisine?</li>
 				<li>What ingredients do you have?</li>
 				<li>Any allergies?</li>
-				<li>Caloric Value?</li>
+				<li>Protein?</>
 			</ol>
 		</form>
 	</div> -->

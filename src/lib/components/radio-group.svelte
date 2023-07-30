@@ -5,10 +5,11 @@
 	export let radioOptions: RadioOption[] = [];
 </script>
 
-<div class="flex gap-4">
+<!-- State needs to be passed up + not as responsive as I'd like -->
+<div class="flex gap-4 flex-wrap md:flex-nowrap">
 	{#each radioOptions as option, index}
 		<button
-			class="flex w-2/5 flex-col items-center justify-center rounded-xl border-2 border-stone-200 p-4"
+			class="flex w-2/5 flex-col items-center justify-center rounded-xl border-[3px] border-stone-200 p-4"
 			class:highlighted-container={selectedIndex === index}
 			on:click={() => (selectedIndex = index)}
 		>
@@ -18,8 +19,8 @@
 			>
 				<div class="h-5/6 w-5/6 rounded-full" class:highlighted-circle={selectedIndex === index} />
 			</div>
-			<div class=" text-xl font-bold">{option.heading}</div>
-			<div class="text-sm">{option.subHeading}</div>
+			<div class=" -mt-1 md:-mt-2 md:text-xl font-bold text-md">{option.heading}</div>
+			<div class="text-xs md:text-sm">{option.subHeading}</div>
 		</button>
 	{/each}
 </div>
@@ -29,15 +30,18 @@
 		--tw-bg-opacity: 1;
 		border-color: rgb(13 148 136 / var(--tw-bg-opacity));
 		background-color: rgb(231 235 228 / var(--tw-bg-opacity));
+		transition-duration: 400ms;
 	}
 
 	.highlighted-circle-border {
 		--tw-bg-opacity: 1;
 		border-color: rgb(13 148 136 / var(--tw-bg-opacity));
+		transition-duration: 400ms;
 	}
 
 	.highlighted-circle {
 		--tw-bg-opacity: 1;
 		background-color: rgb(13 148 136 / var(--tw-bg-opacity));
+		transition-duration: 400ms;
 	}
 </style>
