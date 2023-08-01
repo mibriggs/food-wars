@@ -30,7 +30,7 @@
 			dropdownClosedAndChoiceMade ? ' bg-alabaster' : 'bg-stone-200'
 		} border-2 ${
 			dropdownClosedAndChoiceMade ? 'border-teal-600' : 'border-transparent'
-		} p-4 text-left text-lg duration-500 active:border-teal-600 active:text-teal-600 lg:text-xl`}
+		} p-2 text-left text-lg duration-500 active:border-teal-600 active:text-teal-600 lg:text-xl`}
 		on:click={() => (isDropDownOpen = !isDropDownOpen)}
 	>
 		<div class="flex justify-between">
@@ -39,7 +39,7 @@
 		</div>
 	</button>
 	{#if isDropDownOpen}
-		<div class="flex flex-col gap-2 rounded-lg bg-stone-200 p-4" in:slide out:slide>
+		<div class="flex flex-col gap-2 rounded-lg bg-stone-200 p-2" in:slide out:slide>
 			{#each options as option}
 				<button
 					class="flex items-center justify-start gap-3 rounded-r-lg border-l-4 p-2 hover:border-teal-600 hover:bg-alabaster"

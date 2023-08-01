@@ -2,10 +2,9 @@
 	import { slide } from 'svelte/transition';
 	import DownArrowIcon from '../assets/arrow_drop_down.svg';
 	import UpArrowIcon from '../assets/arrow_drop_up.svg';
-    import CautionIcon from '../assets/warning.svg';
+	import CautionIcon from '../assets/warning.svg';
 
 	export let name: string = 'Allergies';
-	export let imagePath: string = 'src/lib/assets/warning.svg';
 
 	let isDropDownOpen: boolean = false;
 	let searchValue: string = '';
@@ -43,7 +42,7 @@
 			/>
 			{#each { length: 10 } as _, index}
 				<div
-					class="mt-2 flex w-full gap-1 self-start rounded-r-lg border-l-4 p-2 font-sawarabi text-lg hover:border-teal-600 hover:bg-stone-300"
+					class="mt-2 flex w-full items-center justify-start gap-1 self-start rounded-r-lg border-l-4 p-2 font-sawarabi text-lg hover:border-teal-600 hover:bg-stone-300"
 				>
 					<input type="checkbox" id={`vehicle${index}`} name={`vehicle${index}`} value="Bike" />
 					<label for={`vehicle${index}`}>Hello world</label>
@@ -55,7 +54,7 @@
 
 <style lang="postcss">
 	.search-bg {
-		background-image: url('src/lib/assets/search.svg');
+		background-image: url('../assets/search.svg');
 		background-repeat: no-repeat;
 		background-position: right;
 	}

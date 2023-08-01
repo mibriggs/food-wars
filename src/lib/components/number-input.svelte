@@ -15,7 +15,7 @@
 	};
 </script>
 
-<div class="flex w-52 items-center justify-between rounded-lg bg-stone-200 p-3 text-2xl">
+<div class="flex w-52 items-center justify-between rounded-lg bg-stone-200 p-2 text-2xl">
 	<button
 		class="flex h-9 w-9 items-center justify-center rounded-full hover:bg-teal-600"
 		on:click={decrement}
