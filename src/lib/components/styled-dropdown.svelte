@@ -28,7 +28,7 @@
 	<button
 		class={`text-bold rounded-lg ${
 			dropdownClosedAndChoiceMade ? ' bg-alabaster' : 'bg-stone-200'
-		} border-4 ${
+		} border-2 ${
 			dropdownClosedAndChoiceMade ? 'border-teal-600' : 'border-transparent'
 		} p-4 text-left text-lg duration-500 active:border-teal-600 active:text-teal-600 lg:text-xl`}
 		on:click={() => (isDropDownOpen = !isDropDownOpen)}

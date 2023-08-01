@@ -10,6 +10,7 @@
 	import { onMount } from 'svelte';
 	import RadioGroup from '$lib/components/radio-group.svelte';
 	import type { Option, RadioOption } from '$lib/types/types';
+	import TagsInput from '$lib/components/tags-input.svelte';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
@@ -66,14 +67,14 @@
 		return timeInStringFormat;
 	};
 
-	const handleDropdownValue = (event: CustomEvent<{value: string}>): void => {
+	const handleDropdownValue = (event: CustomEvent<{ value: string }>): void => {
 		mealType = event.detail.value;
 	};
-	
-	const handleRadioValue = (event: CustomEvent<{value: string}>): void => {
+
+	const handleRadioValue = (event: CustomEvent<{ value: string }>): void => {
 		caloricChoice = event.detail.value;
-	}
-	
+	};
+
 	$: timeLabel = timeInMinutes < 60 ? `${timeInMinutes} Minutes` : getHours();
 </script>
 
@@ -113,8 +114,13 @@
 		</div>
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
-			<StyledNumber index="3">Caloric Value?</StyledNumber>
-			<RadioGroup {radioOptions} on:radioPicked={handleRadioValue}/>
+			<StyledNumber index="3">Caloric value?</StyledNumber>
+			<RadioGroup {radioOptions} on:radioPicked={handleRadioValue} />
+		</div>
+
+		<div class="text-md flex flex-col gap-3 md:text-lg">
+			<StyledNumber index="4">Any allergies?</StyledNumber>
+			<TagsInput />
 		</div>
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
