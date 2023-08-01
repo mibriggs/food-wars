@@ -2,6 +2,7 @@
 	import { slide } from 'svelte/transition';
 	import DownArrowIcon from '../assets/arrow_drop_down.svg';
 	import UpArrowIcon from '../assets/arrow_drop_up.svg';
+    import CautionIcon from '../assets/warning.svg';
 
 	export let name: string = 'Allergies';
 	export let imagePath: string = 'src/lib/assets/warning.svg';
@@ -19,7 +20,7 @@
 		class="flex w-full items-center justify-between rounded-lg border-2 border-transparent bg-stone-200 p-2 hover:border-teal-600"
 	>
 		<div class="flex items-center gap-2 pl-2">
-			<img src={imagePath} alt="" />
+			<img src={CautionIcon} alt="" />
 			<div>{name}</div>
 		</div>
 		<button on:click={() => (isDropDownOpen = !isDropDownOpen)}>
