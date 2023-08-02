@@ -10,7 +10,7 @@
 	import { onMount } from 'svelte';
 	import RadioGroup from '$lib/components/radio-group.svelte';
 	import type { Option, RadioOption } from '$lib/types/types';
-	import TagsInput from '$lib/components/tags-input.svelte';
+	import MultiSelect from '$lib/components/multi-select.svelte';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
@@ -120,7 +120,7 @@
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
 			<StyledNumber index="4">Any allergies?</StyledNumber>
-			<TagsInput />
+			<MultiSelect />
 		</div>
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">

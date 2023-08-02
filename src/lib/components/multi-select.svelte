@@ -5,6 +5,7 @@
 	import CautionIcon from '../assets/warning.svg';
 
 	export let name: string = 'Allergies';
+	export let options: string[] = Array(10).fill("Option");
 
 	let isDropDownOpen: boolean = false;
 	let searchValue: string = '';
@@ -40,12 +41,12 @@
 				placeholder="Search allergies"
 				bind:value={searchValue}
 			/>
-			{#each { length: 10 } as _, index}
+			{#each options as option, index}
 				<div
 					class="mt-2 flex w-full items-center justify-start gap-1 self-start rounded-r-lg border-l-4 p-2 font-sawarabi text-lg hover:border-teal-600 hover:bg-stone-300"
 				>
 					<input type="checkbox" id={`vehicle${index}`} name={`vehicle${index}`} value="Bike" />
-					<label for={`vehicle${index}`}>Hello world</label>
+					<label for={`vehicle${index}`}>{`${option} ${index + 1}`}</label>
 				</div>
 			{/each}
 		</div>
