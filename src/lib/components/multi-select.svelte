@@ -3,15 +3,22 @@
 	import DownArrowIcon from '../assets/arrow_drop_down.svg';
 	import UpArrowIcon from '../assets/arrow_drop_up.svg';
 	import CautionIcon from '../assets/warning.svg';
+	import type { MultiSelectOption } from '$lib/types/types';
 
 	export let name: string = 'Allergies';
-	export let options: string[] = Array(10).fill("Option");
+	export let options: MultiSelectOption[] = [ // Dummy filler values
+		{id: 'halal', value: 'Halal'},
+		{id: 'vegan', value: 'Vegan'},
+		{id: 'gluten-free', value: 'Gluten Free'},
+		{id: 'dairy-free', value: 'Dairy Free'}
+	];
+	let filteredList: MultiSelectOption[] = options;
 
 	let isDropDownOpen: boolean = false;
 	let searchValue: string = '';
 
 	const handleSearchChange = (): void => {
-		console.log(searchValue);
+		filteredList = options.filter((listOption) => listOption.value.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
 	};
 </script>
 
@@ -33,20 +40,20 @@
 			class="flex h-56 w-full flex-col overflow-y-auto rounded-lg bg-stone-200 p-2 text-lg text-raisin"
 			in:slide
 			out:slide
-			on:input={handleSearchChange}
 		>
 			<input
 				type="text"
 				class="search-bg rounded-lg bg-stone-300 p-2 text-raisin outline-none"
 				placeholder="Search allergies"
 				bind:value={searchValue}
+				on:input={handleSearchChange}
 			/>
-			{#each options as option, index}
+			{#each filteredList as option, index}
 				<div
 					class="mt-2 flex w-full items-center justify-start gap-1 self-start rounded-r-lg border-l-4 p-2 font-sawarabi text-lg hover:border-teal-600 hover:bg-stone-300"
 				>
-					<input type="checkbox" id={`vehicle${index}`} name={`vehicle${index}`} value="Bike" />
-					<label for={`vehicle${index}`}>{`${option} ${index + 1}`}</label>
+					<input type="checkbox" id={option.id} name={option.id} value={option.id} />
+					<label for={option.id}>{`${option.value}`}</label>
 				</div>
 			{/each}
 		</div>

@@ -9,3 +9,8 @@ export type RadioOption = {
 	heading: string;
 	subHeading: string;
 };
+
+export type MultiSelectOption = {
+	id: string;
+	value: string;
+}
