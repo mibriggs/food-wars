@@ -21,10 +21,10 @@
 			on:click={() => handleRadioOptionPicked(option.value, index)}
 		>
 			<div
-				class=" flex h-5 w-5 items-center justify-center self-start rounded-full border-[1px]"
+				class="flex h-6 w-6 items-center justify-center self-start rounded-full border-[1px]"
 				class:highlighted-circle-border={selectedIndex === index}
 			>
-				<div class="h-5/6 w-5/6 rounded-full" class:highlighted-circle={selectedIndex === index} />
+				<div class="flex h-4 w-4 rounded-full" class:highlighted-circle={selectedIndex === index} />
 			</div>
 			<div class=" text-md -mt-1 font-bold md:-mt-2 md:text-xl">{option.heading}</div>
 			<div class="text-xs md:text-sm">{option.subHeading}</div>
