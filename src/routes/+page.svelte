@@ -22,7 +22,7 @@
 	];
 	const radioOptions: RadioOption[] = [
 		{ value: 'low', heading: 'Low', subHeading: 'Less than 500 calories' },
-		{ value: 'medium', heading: 'Medium', subHeading: 'Between 500 and 800 calories' },
+		{ value: 'medium', heading: 'Medium', subHeading: 'Around 500-800 calories' },
 		{ value: 'high', heading: 'High', subHeading: 'Over than 800 calories' }
 	];
 

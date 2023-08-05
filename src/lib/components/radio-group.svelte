@@ -21,7 +21,7 @@
 			on:click={() => handleRadioOptionPicked(option.value, index)}
 		>
 			<div
-				class="flex h-6 w-6 items-center justify-center self-start rounded-full border-[1px]"
+				class="relative bottom-[0.6em] right-[0.7em] flex h-6 w-6 items-center justify-center self-start rounded-full border-[1px]"
 				class:highlighted-circle-border={selectedIndex === index}
 			>
 				<div class="flex h-4 w-4 rounded-full" class:highlighted-circle={selectedIndex === index} />

@@ -6,11 +6,12 @@
 	import type { MultiSelectOption } from '$types';
 
 	export let name: string = 'Allergies';
-	export let options: MultiSelectOption[] = [ // Dummy filler values
-		{id: 'halal', value: 'Halal'},
-		{id: 'vegan', value: 'Vegan'},
-		{id: 'gluten-free', value: 'Gluten Free'},
-		{id: 'dairy-free', value: 'Dairy Free'}
+	export let options: MultiSelectOption[] = [
+		// Dummy filler values
+		{ id: 'halal', value: 'Halal' },
+		{ id: 'vegan', value: 'Vegan' },
+		{ id: 'gluten-free', value: 'Gluten Free' },
+		{ id: 'dairy-free', value: 'Dairy Free' }
 	];
 	let filteredList: MultiSelectOption[] = options;
 
@@ -18,7 +19,9 @@
 	let searchValue: string = '';
 
 	const handleSearchChange = (): void => {
-		filteredList = options.filter((listOption) => listOption.value.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
+		filteredList = options.filter((listOption) =>
+			listOption.value.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
+		);
 	};
 </script>
 
