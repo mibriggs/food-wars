@@ -1,16 +1,16 @@
 <script lang="ts">
-	import alarm from '$images/alarm.svg';
+	import AlarmIcon from '$images/alarm.svg';
+	import BreakfastIcon from '$images/breakfast.svg';
+	import DinnerIcon from '$images/dinner.svg';
+	import LunchIcon from '$images/lunch.svg';
+	import SnackIcon from '$images/snack.svg';
+	import MultiSelect from '$components/multi-select.svelte';
+	import NumberInput from '$components/number-input.svelte';
+	import RadioGroup from '$components/radio-group.svelte';
 	import StyledNumber from '$components/styled-number.svelte';
 	import StyledDropdown from '$components/styled-dropdown.svelte';
-	import BreakfastIcon from '$images/breakfast.svg';
-	import LunchIcon from '$images/lunch.svg';
-	import DinnerIcon from '$images/dinner.svg';
-	import SnackIcon from '$images/snack.svg';
-	import NumberInput from '$components/number-input.svelte';
 	import { onMount } from 'svelte';
-	import RadioGroup from '$components/radio-group.svelte';
 	import type { Option, RadioOption } from '$types';
-	import MultiSelect from '$components/multi-select.svelte';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
@@ -92,7 +92,7 @@
 			<div class="flex flex-col gap-2">
 				<label for="time" class="self-center">
 					<div class="flex items-center justify-center gap-2">
-						<img src={alarm} alt="clock" />
+						<img src={AlarmIcon} alt="clock" />
 						<div>{timeLabel}</div>
 					</div>
 				</label>

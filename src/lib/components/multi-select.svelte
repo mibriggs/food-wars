@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { slide } from 'svelte/transition';
+	import CautionIcon from '$images/warning.svg';
 	import DownArrowIcon from '$images/arrow_drop_down.svg';
 	import UpArrowIcon from '$images/arrow_drop_up.svg';
-	import CautionIcon from '$images/warning.svg';
+	import { slide } from 'svelte/transition';
 	import type { MultiSelectOption } from '$types';
 
 	export let name: string = 'Allergies';
