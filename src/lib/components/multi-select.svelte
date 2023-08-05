@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import DownArrowIcon from '../assets/arrow_drop_down.svg';
-	import UpArrowIcon from '../assets/arrow_drop_up.svg';
-	import CautionIcon from '../assets/warning.svg';
-	import type { MultiSelectOption } from '$lib/types/types';
+	import DownArrowIcon from '$images/arrow_drop_down.svg';
+	import UpArrowIcon from '$images/arrow_drop_up.svg';
+	import CautionIcon from '$images/warning.svg';
+	import type { MultiSelectOption } from '$types';
 
 	export let name: string = 'Allergies';
 	export let options: MultiSelectOption[] = [ // Dummy filler values

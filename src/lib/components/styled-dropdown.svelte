@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
-	import DownArrowIcon from '../assets/arrow_drop_down.svg';
-	import UpArrowIcon from '../assets/arrow_drop_up.svg';
-	import type { Option } from '$lib/types/types';
+	import DownArrowIcon from '$images/arrow_drop_down.svg';
+	import UpArrowIcon from '$images/arrow_drop_up.svg';
+	import type { Option } from '$types';
 
 	export let options: Option[];
 

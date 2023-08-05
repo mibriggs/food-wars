@@ -1,9 +1,9 @@
 <script lang="ts">
-	import FoodCard from '../../lib/components/food-card.svelte';
-	import RestartIcon from '../../lib/assets/restart.svg';
-	import IosRightIcon from '../../lib/assets/arrow_right_ios.svg';
-	import ForwardArrowIcon from '../../lib/assets/arrow_forward_ios.svg';
-	import BackwardArrowIcon from '../../lib/assets/arrow_back_ios.svg';
+	import FoodCard from '$components/food-card.svelte';
+	import RestartIcon from '$images/restart.svg';
+	import IosRightIcon from '$images/arrow_right_ios.svg';
+	import ForwardArrowIcon from '$images/arrow_forward_ios.svg';
+	import BackwardArrowIcon from '$images/arrow_back_ios.svg';
 
 	const createRandomString = (): string => {
 		return (Math.random() + 1).toString(36).substring(7);

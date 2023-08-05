@@ -1,6 +1,6 @@
 <script lang="ts">
-	import AddIcon from '../assets/add.svg';
-	import MinusIcon from '../assets/minus.svg';
+	import AddIcon from '$images/add.svg';
+	import MinusIcon from '$images/minus.svg';
 
 	export let min: number;
 	export let max: number;

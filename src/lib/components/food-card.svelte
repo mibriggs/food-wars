@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import bulgogi from '../assets/bulgogi.jpeg';
-	import SeeMoreButton from './see-more-button.svelte';
+	import bulgogi from '$images/bulgogi.jpeg';
+	import SeeMoreButton from '$components/see-more-button.svelte';
 
 	export let isSelected: boolean = false;
 	export let isHidden: boolean = false;
