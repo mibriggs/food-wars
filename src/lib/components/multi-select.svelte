@@ -4,17 +4,18 @@
 	import UpArrowIcon from '$images/arrow_drop_up.svg';
 	import { slide } from 'svelte/transition';
 	import type { MultiSelectOption } from '$types';
+	import Checkbox from './checkbox.svelte';
 
 	export let name: string = 'Allergies';
 	export let options: MultiSelectOption[] = [
 		// Dummy filler values
-		{ id: 'halal', value: 'Halal' },
-		{ id: 'vegan', value: 'Vegan' },
-		{ id: 'gluten-free', value: 'Gluten Free' },
-		{ id: 'dairy-free', value: 'Dairy Free' }
+		{ id: 'halal', value: 'Halal', checked: false },
+		{ id: 'vegan', value: 'Vegan', checked: false },
+		{ id: 'gluten-free', value: 'Gluten Free', checked: false },
+		{ id: 'dairy-free', value: 'Dairy Free', checked: false }
 	];
-	let filteredList: MultiSelectOption[] = options;
 
+	let filteredList: MultiSelectOption[] = options;
 	let isDropDownOpen: boolean = false;
 	let searchValue: string = '';
 
@@ -50,12 +51,11 @@
 				bind:value={searchValue}
 				on:input={handleSearchChange}
 			/>
-			{#each filteredList as option, index}
+			{#each filteredList as option}
 				<div
-					class="mt-2 flex w-full items-center justify-start gap-1 self-start rounded-r-lg border-l-4 p-2 font-sawarabi text-lg hover:border-teal-600 hover:bg-stone-300 border-transparent"
+					class="mt-2 flex w-full items-center justify-start gap-1 self-start rounded-r-lg border-l-4 border-transparent p-2 font-sawarabi text-lg hover:border-teal-600 hover:bg-stone-300"
 				>
-					<input type="checkbox" id={option.id} name={option.id} value={option.id} />
-					<label for={option.id}>{`${option.value}`}</label>
+					<Checkbox {option} />
 				</div>
 			{/each}
 		</div>
@@ -67,26 +67,5 @@
 		background-image: url('$images/search.svg');
 		background-repeat: no-repeat;
 		background-position: left 95% bottom 50%;
-	}
-
-	input[type='checkbox'] {
-		--tw-border-opacity: 1;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		cursor: pointer;
-		width: 1.5rem;
-		height: 1.5rem;
-		border-width: 1px;
-		border-radius: 0.375rem;
-		background-color: rgb(252 247 248 / var(--tw-bg-opacity));
-		border-color: rgb(51 46 60 / var(--tw-border-opacity));
-	}
-	
-	input[type='checkbox']:checked {
-		background-color: rgb(13 148 136 / var(--tw-border-opacity));
-		background-image: url('$images/check.svg');
-		background-repeat: no-repeat;
-		background-position: center;
 	}
 </style>
