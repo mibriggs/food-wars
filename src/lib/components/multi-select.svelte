@@ -55,7 +55,7 @@
 				<div
 					class="mt-2 flex w-full items-center justify-start gap-1 self-start rounded-r-lg border-l-4 p-2 font-sawarabi text-lg hover:border-teal-600 hover:bg-stone-300 border-transparent"
 				>
-					<input type="checkbox" id={option.id} name={option.id} value={option.id} class="material-symbols-outlined" />
+					<input type="checkbox" id={option.id} name={option.id} value={option.id} />
 					<label for={option.id}>{`${option.value}`}</label>
 				</div>
 			{/each}
@@ -88,7 +88,7 @@
 		border-color: rgb(51 46 60 / var(--tw-border-opacity));
 	}
 
-	input[type='checkbox'].material-symbols-outlined:checked {
+	input[type='checkbox']:checked {
 		--tw-border-opacity: 1;
 		border-width: 1px;
 		border-color: rgb(51 46 60 / var(--tw-text-opacity));
