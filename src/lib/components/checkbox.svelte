@@ -6,9 +6,9 @@
 	const handleClick = () => {
 		option.checked = !option.checked;
 		if (option.checked) {
-            allergiesStore.update(currentValue => [...currentValue, option.id])
+			allergiesStore.update((currentValue) => [...currentValue, option.id]);
 		} else {
-            allergiesStore.update(currentValue => currentValue.filter(item => item !== option.id));
+			allergiesStore.update((currentValue) => currentValue.filter((item) => item !== option.id));
 		}
 	};
 </script>
