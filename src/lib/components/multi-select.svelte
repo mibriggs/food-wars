@@ -26,17 +26,16 @@
 </script>
 
 <div class="flex w-full flex-col gap-2 md:w-6/12 lg:w-1/4">
-	<div
+	<button
 		class="flex w-full items-center justify-between rounded-lg border-2 border-transparent bg-stone-200 p-2 hover:border-teal-600"
+		on:click={() => (isDropDownOpen = !isDropDownOpen)}
 	>
 		<div class="flex items-center gap-2 pl-2">
 			<img src={CautionIcon} alt="" />
 			<div>{name}</div>
 		</div>
-		<button on:click={() => (isDropDownOpen = !isDropDownOpen)}>
-			<img src={isDropDownOpen ? UpArrowIcon : DownArrowIcon} alt="arrow icon" />
-		</button>
-	</div>
+		<img src={isDropDownOpen ? UpArrowIcon : DownArrowIcon} alt="arrow icon" />
+	</button>
 
 	{#if isDropDownOpen}
 		<div
@@ -75,23 +74,16 @@
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		appearance: none;
+		cursor: pointer;
 		width: 1.5rem;
 		height: 1.5rem;
-		background-color: rgb(252 247 248 / var(--tw-bg-opacity));
-		border-radius: 0.375rem;
-		cursor: pointer;
-	}
-
-	input[type='checkbox']:hover {
-		--tw-border-opacity: 1;
 		border-width: 1px;
+		border-radius: 0.375rem;
+		background-color: rgb(252 247 248 / var(--tw-bg-opacity));
 		border-color: rgb(51 46 60 / var(--tw-border-opacity));
 	}
-
+	
 	input[type='checkbox']:checked {
-		--tw-border-opacity: 1;
-		border-width: 1px;
-		border-color: rgb(51 46 60 / var(--tw-text-opacity));
 		background-color: rgb(13 148 136 / var(--tw-border-opacity));
 		background-image: url('$images/check.svg');
 		background-repeat: no-repeat;
