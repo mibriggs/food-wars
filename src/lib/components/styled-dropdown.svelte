@@ -26,11 +26,11 @@
 	class="flex w-full flex-col gap-2 rounded-lg text-left font-bold tracking-wider md:w-1/2 lg:w-2/5 xl:w-1/4"
 >
 	<button
-		class={`text-bold rounded-lg ${
+		class={`rounded-lg ${
 			dropdownClosedAndChoiceMade ? ' bg-alabaster' : 'bg-stone-200'
 		} border-2 ${
 			dropdownClosedAndChoiceMade ? 'border-teal-600' : 'border-transparent'
-		} p-2 text-left text-lg duration-500 active:border-teal-600 active:text-teal-600 lg:text-xl`}
+		} p-2 text-left text-md duration-500 active:border-teal-600 active:text-teal-600`}
 		on:click={() => (isDropDownOpen = !isDropDownOpen)}
 	>
 		<div class="flex justify-between">

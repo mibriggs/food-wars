@@ -11,7 +11,6 @@
 	import StyledDropdown from '$components/styled-dropdown.svelte';
 	import { onMount } from 'svelte';
 	import type { Option, RadioOption } from '$types';
-	import { allergiesStore } from '$stores/allergies';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
