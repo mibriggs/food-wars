@@ -120,7 +120,7 @@
 		</div>
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
-			<StyledNumber index="4">Any allergies?</StyledNumber>
+			<StyledNumber index="4">Any dietary restrictions?</StyledNumber>
 			<MultiSelect />
 		</div>
 

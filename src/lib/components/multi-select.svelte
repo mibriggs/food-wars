@@ -6,11 +6,16 @@
 	import type { MultiSelectOption } from '$types';
 	import Checkbox from './checkbox.svelte';
 
-	export let name: string = 'Allergies';
+	export let name: string = 'Restrictions';
 	export let options: MultiSelectOption[] = [
 		// Dummy filler values
 		{ id: 'halal', value: 'Halal', checked: false },
+		{ id: 'kosher', value: 'Kosher', checked: false },
 		{ id: 'vegan', value: 'Vegan', checked: false },
+		{ id: 'vegetarian', value: 'Vegetarian', checked: false },
+		{ id: 'pescetarian', value: 'Pescetarian', checked: false },
+		{ id: 'peanut', value: 'Peanut', checked: false },
+		{ id: 'shellfish', value: 'Shellfish', checked: false },
 		{ id: 'gluten-free', value: 'Gluten Free', checked: false },
 		{ id: 'dairy-free', value: 'Dairy Free', checked: false }
 	];
@@ -40,20 +45,22 @@
 
 	{#if isDropDownOpen}
 		<div
-			class="flex h-56 w-full flex-col overflow-y-auto rounded-lg bg-stone-200 p-2 text-lg text-raisin"
+			class="flex h-52 w-full flex-col overflow-y-auto rounded-lg bg-stone-200 pb-2 pl-2 pr-2 text-lg text-raisin"
 			in:slide
 			out:slide
 		>
-			<input
-				type="text"
-				class="search-bg rounded-lg bg-stone-300 p-2 text-raisin outline-none"
-				placeholder="Search allergies"
-				bind:value={searchValue}
-				on:input={handleSearchChange}
-			/>
+			<div class=" sticky top-0 w-full bg-stone-200 pt-2">
+				<input
+					type="text"
+					class="search-bg w-full rounded-lg bg-stone-300 p-2 text-raisin outline-none"
+					placeholder="Search options..."
+					bind:value={searchValue}
+					on:input={handleSearchChange}
+				/>
+			</div>
 			{#each filteredList as option}
 				<div
-					class="mt-2 flex w-full items-center justify-start gap-1 self-start rounded-r-lg border-l-4 border-transparent p-2 font-sawarabi text-lg hover:border-teal-600 hover:bg-stone-300"
+					class="mt-1 flex w-full items-center justify-start gap-1 self-start rounded-r-lg border-l-4 border-transparent p-2 font-sawarabi text-lg hover:border-teal-600 hover:bg-stone-300"
 				>
 					<Checkbox {option} />
 				</div>
