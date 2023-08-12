@@ -100,32 +100,32 @@
 			</div>
 		{/if}
 	</div> -->
-		<div class="hidden flex-row items-center gap-32 semi-md:flex">
-			<FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
-			<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} />
+	<div class="hidden flex-row items-center gap-32 semi-md:flex">
+		<FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
+		<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} />
+	</div>
+
+	<div class="flex flex-col items-center justify-center semi-md:hidden">
+		<FoodCard
+			isSelected={isLeftSelected}
+			on:cardClicked={() => handleSelection(false)}
+			isHidden={isOnSecondCard}
+		/>
+		<FoodCard
+			isSelected={isRightSelected}
+			on:cardClicked={() => handleSelection(true)}
+			isHidden={!isOnSecondCard}
+		/>
+		<div class="flex items-center justify-center gap-2 py-5 font-sawarabi text-2xl">
+			<button on:click={() => (isOnSecondCard = !isOnSecondCard)}>
+				<img src={BackwardArrowIcon} alt="" />
+			</button>
+			{isOnSecondCard ? 2 : 1}/2
+			<button on:click={() => (isOnSecondCard = !isOnSecondCard)}>
+				<img src={ForwardArrowIcon} alt="" />
+			</button>
 		</div>
-		
-		<div class="flex flex-col items-center justify-center semi-md:hidden">
-			<FoodCard
-				isSelected={isLeftSelected}
-				on:cardClicked={() => handleSelection(false)}
-				isHidden={isOnSecondCard}
-			/>
-			<FoodCard
-				isSelected={isRightSelected}
-				on:cardClicked={() => handleSelection(true)}
-				isHidden={!isOnSecondCard}
-			/>
-			<div class="flex items-center justify-center gap-2 py-5 font-sawarabi text-2xl">
-				<button on:click={() => (isOnSecondCard = !isOnSecondCard)}>
-					<img src={BackwardArrowIcon} alt="" />
-				</button>
-				{isOnSecondCard ? 2 : 1}/2
-				<button on:click={() => (isOnSecondCard = !isOnSecondCard)}>
-					<img src={ForwardArrowIcon} alt="" />
-				</button>
-			</div>
-		</div>
+	</div>
 
 	<!-- 
 		We Want a button Here basically it should be hidden by default

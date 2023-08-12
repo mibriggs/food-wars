@@ -38,7 +38,7 @@ export default {
 			},
 			screens: {
 				'semi-md': '900px'
-			},
+			}
 		}
 	},
 	plugins: [rotateY]
