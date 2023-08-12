@@ -5,12 +5,19 @@
 	import BackwardArrowIcon from '$images/arrow_back_ios.svg';
 	import FoodCard from '$components/food-card.svelte';
 
+	let isLeftSelected: boolean = false;
+	let isRightSelected: boolean = false;
+	let isOnSecondCard: boolean = false;
+	let screenWidth: number;
+	const MAX_WIDTH: number = 1000;
+
 	const handleSelection = (isRightCard: boolean): void => {
 		isRightSelected = isRightCard;
 		isLeftSelected = !isRightCard;
 	};
 
 	const setUpCards = () => {
+		console.log('Setting up for mobile');
 		if (isRightSelected) {
 			isOnSecondCard = true;
 		} else {
@@ -18,16 +25,13 @@
 		}
 	};
 
-	let isLeftSelected: boolean = false;
-	let isRightSelected: boolean = false;
-	let isOnSecondCard: boolean = false;
-	let screenWidth: number;
-	const MAX_WIDTH: number = 1000;
+	const tearDownCards = () => {
+		console.log('Tearing down for mobile');
+		isOnSecondCard = false;
+	};
 
 	$: isNextButtonHidden = !isLeftSelected && !isRightSelected;
-	$: if (screenWidth < MAX_WIDTH) {
-		setUpCards();
-	}
+	$: (screenWidth < MAX_WIDTH) ? setUpCards() : tearDownCards();
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
