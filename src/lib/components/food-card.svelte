@@ -41,7 +41,10 @@
 			</div>
 			<SeeMoreButton on:click={handleCardFlip}>Read More</SeeMoreButton>
 		</div>
-		<div class="back absolute flex h-full w-full flex-col items-center justify-center">
+		<div
+			class="back absolute flex h-full w-full flex-col items-center justify-center"
+			class:hidden-back={!isFlipped}
+		>
 			<div>Back Information</div>
 			<SeeMoreButton on:click={handleCardFlip}>See Front</SeeMoreButton>
 		</div>
@@ -77,6 +80,10 @@
 	}
 
 	.hidden-card {
+		display: none;
+	}
+
+	.hidden-back {
 		display: none;
 	}
 </style>
