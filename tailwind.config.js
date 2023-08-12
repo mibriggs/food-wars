@@ -35,7 +35,10 @@ export default {
 			},
 			dropShadow: {
 				'overlay-alabaster': '0px 4px 4px #E7EBE4'
-			}
+			},
+			screens: {
+				'semi-md': '900px'
+			},
 		}
 	},
 	plugins: [rotateY]

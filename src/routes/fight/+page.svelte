@@ -100,13 +100,12 @@
 			</div>
 		{/if}
 	</div> -->
-	{#if screenWidth > MAX_WIDTH}
-		<div class="flex flex-row items-center gap-32">
+		<div class="hidden flex-row items-center gap-32 semi-md:flex">
 			<FoodCard isSelected={isLeftSelected} on:cardClicked={() => handleSelection(false)} />
 			<FoodCard isSelected={isRightSelected} on:cardClicked={() => handleSelection(true)} />
 		</div>
-	{:else}
-		<div class="flex flex-col items-center justify-center">
+		
+		<div class="flex flex-col items-center justify-center semi-md:hidden">
 			<FoodCard
 				isSelected={isLeftSelected}
 				on:cardClicked={() => handleSelection(false)}
@@ -127,7 +126,6 @@
 				</button>
 			</div>
 		</div>
-	{/if}
 
 	<!-- 
 		We Want a button Here basically it should be hidden by default
