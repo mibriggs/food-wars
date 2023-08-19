@@ -31,7 +31,7 @@
 	};
 
 	$: isNextButtonHidden = !isLeftSelected && !isRightSelected;
-	$: (screenWidth < MAX_WIDTH) ? setUpCards() : tearDownCards();
+	$: screenWidth < MAX_WIDTH ? setUpCards() : tearDownCards();
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />

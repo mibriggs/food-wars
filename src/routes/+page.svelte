@@ -23,7 +23,7 @@
 	const radioOptions: RadioOption[] = [
 		{ value: 'low', heading: 'Low', subHeading: 'Less than 500 calories' },
 		{ value: 'medium', heading: 'Medium', subHeading: 'Around 500-800 calories' },
-		{ value: 'high', heading: 'High', subHeading: 'Over than 800 calories' }
+		{ value: 'high', heading: 'High', subHeading: 'Greater than 800 calories' }
 	];
 
 	//allergies is in a store, don't forget to pass along
@@ -125,50 +125,27 @@
 		</div>
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
+			<StyledNumber index="5">Cuisines?</StyledNumber>
+			<!-- <div class="flex flex-col w-2/5">
+				<input type="text" />
+				<hr />
+			</div> -->
+		</div>
+
+		<div class="text-md flex flex-col gap-3 md:text-lg">
+			<StyledNumber index="6">What ingredients do you have?</StyledNumber>
+		</div>
+
+		<div class="text-md flex flex-col gap-3 md:text-lg">
 			<StyledNumber index="7">How many options do you want?</StyledNumber>
 			<NumberInput min={4} max={64} bind:value={numberOfOptions} />
 		</div>
 	</div>
 
-	<!-- <div>
-		<form>
-			<ol class="list-decimal">
-				<li>What type of meal are you trying to cook</li> DONE
-				<li>How much time do you have?</li> DONE
-				<li>How many options do you want?</li> DONE
-				<li>Caloric Value?</li> DONE
-				<li>Any specific cuisine?</li>
-				<li>What ingredients do you have?</li>
-				<li>Any allergies?</li>
-				<li>Protein?</>
-			</ol>
-		</form>
-	</div> -->
-
-	<div class="flex h-full items-center justify-center">
+	<div class="flex h-full items-center justify-center pb-5">
 		<a href="/fight" class="w-fit rounded-2xl bg-teal-600 p-4 text-2xl text-snow">Get Started</a>
 	</div>
 </div>
-
-<!-- 
-    * IG they could just skip the form and if nothing suits them then we could have a modal pop-up and be like are you sure you wanna continue with nothing entered. Yes Surprise me/no im boring
-    * What should I cook for lunch?
-    * So like we can either have no parameters
-    * Or we can have parameters like:
-        * Cuisine 
-        * Type of meal (Breakfast, Lunch, Dinner etc…)
-        * Nutritonal val, (low, balanced, high calorie etc)
-        * Time to prep/cook (range with slider)
-        * Ingredients I have
-        * Number of dishes to pick from (default 16)
-        * Protein?
-        * Allergies/avoidants?
-    * Bracket style!
-    * With pictures (1 photo or multiple, carousel style)
-    * Ingredients
-    * Link to recipe?
-    * Link to TikTok videos for recipe? 
--->
 
 <style lang="postcss">
 	/* Getting rid of base range styling */

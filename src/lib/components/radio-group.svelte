@@ -16,7 +16,7 @@
 <div class="flex flex-wrap gap-4 md:flex-nowrap">
 	{#each radioOptions as option, index}
 		<button
-			class="flex w-2/5 flex-col items-center justify-center rounded-xl border-2 border-stone-200 p-4"
+			class="flex w-[30%] flex-col items-center justify-center rounded-xl border-2 border-stone-200 p-4 md:w-2/5"
 			class:highlighted-container={selectedIndex === index}
 			on:click={() => handleRadioOptionPicked(option.value, index)}
 		>
