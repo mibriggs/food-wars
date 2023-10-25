@@ -11,6 +11,7 @@
 	import StyledDropdown from '$components/styled-dropdown.svelte';
 	import { onMount } from 'svelte';
 	import type { Option, RadioOption } from '$types';
+	import InputTags from '$components/input-tags.svelte';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
@@ -134,6 +135,7 @@
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
 			<StyledNumber index="6">What ingredients do you have?</StyledNumber>
+			<InputTags />
 		</div>
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
