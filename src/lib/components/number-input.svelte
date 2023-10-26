@@ -17,14 +17,14 @@
 
 <div class="flex w-48 items-center justify-between rounded-full bg-stone-200 p-2 text-2xl">
 	<button
-		class="flex h-9 w-9 items-center justify-center rounded-full hover:bg-teal-600"
+		class="flex h-9 w-9 touch-manipulation items-center justify-center rounded-full hover:bg-teal-600"
 		on:click={decrement}
 	>
 		<img src={MinusIcon} alt="minus button" class="hovered" />
 	</button>
 	<div class="text-raisin">{value}</div>
 	<button
-		class="flex h-9 w-9 items-center justify-center rounded-full hover:bg-teal-600"
+		class="flex h-9 w-9 touch-manipulation items-center justify-center rounded-full hover:bg-teal-600"
 		on:click={increment}
 	>
 		<img src={AddIcon} alt="plus button" class="hovered" />
