@@ -7,7 +7,6 @@
 
 	const showToast = (message: string, icon: string) => {
 		toast(message, {
-			position: 'top-center',
 			duration: 1250,
 			icon: icon,
 			style:
