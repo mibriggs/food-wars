@@ -31,7 +31,7 @@
 	};
 </script>
 
-<div class="flex w-full flex-col gap-2 md:w-6/12 lg:w-1/4">
+<div class="flex w-full flex-col gap-2 md:w-6/12 lg:w-2/6">
 	<button
 		class="flex w-full items-center justify-between rounded-lg border-2 border-transparent bg-stone-200 p-2 hover:border-teal-600"
 		on:click={() => (isDropDownOpen = !isDropDownOpen)}
