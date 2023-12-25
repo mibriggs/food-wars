@@ -144,7 +144,7 @@
 		</div>
 	</div>
 
-	<div class="flex h-full items-center justify-center pb-5">
+	<div class="flex h-full items-center justify-end pb-5">
 		<a href="/fight" class="w-fit rounded-2xl bg-teal-600 p-4 text-2xl text-snow">Get Started</a>
 	</div>
 </div>

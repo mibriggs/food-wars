@@ -75,8 +75,12 @@
 	}
 
 	.selected {
+		--tw-border-opacity: 1;
+		border-color: rgb(13 148 136 / var(--tw-border-opacity));
 		border-width: 4px;
-		border-color: teal;
+		/* border-color: teal; */
+		/* border-width: 4px; */
+		/* border-color: teal; */
 	}
 
 	.hidden-card {
