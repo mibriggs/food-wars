@@ -13,7 +13,7 @@
 </script>
 
 <!-- State needs to be passed up + not as responsive as I'd like -->
-<div class="flex flex-wrap gap-4 md:flex-nowrap">
+<div class="flex flex-wrap gap-3 sm:gap-4 md:flex-nowrap">
 	{#each radioOptions as option, index}
 		<button
 			class="flex w-[30%] flex-col items-center justify-center rounded-xl border-2 border-stone-200 p-4 md:w-2/5"

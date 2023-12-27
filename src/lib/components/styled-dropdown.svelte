@@ -1,21 +1,34 @@
 <script lang="ts">
-	import { ChevronDown, ChevronUp } from 'lucide-svelte';
+	import type { Meal } from '$types';
+	import { ChevronDown, ChevronUp, EggFried, Sandwich, Beef, Popcorn } from 'lucide-svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { slide } from 'svelte/transition';
-	import type { Option } from '$types';
 
-	export let options: Option[];
+	export let options: Meal[];
 
 	let isDropDownOpen: boolean = false;
 	let isOptionSelected: boolean = false;
 	let dropdownText: string = 'Please select one';
 	const dispatch = createEventDispatcher();
 
-	const handleDropDownOptionClick = (dropdownValue: Option) => {
-		dropdownText = dropdownValue.message;
+	const handleDropDownOptionClick = (dropdownValue: string) => {
+		dropdownText = dropdownValue;
 		isDropDownOpen = !isDropDownOpen;
 		isOptionSelected = true;
-		dispatch('selectionMade', { value: dropdownValue.value });
+		dispatch('selectionMade', { value: dropdownValue });
+	};
+
+	const getIcon = (mealType: Meal) => {
+		switch (mealType) {
+			case 'breakfast':
+				return EggFried;
+			case 'lunch':
+				return Sandwich;
+			case 'dinner':
+				return Beef;
+			case 'snack':
+				return Popcorn;
+		}
 	};
 
 	$: dropdownClosedAndChoiceMade = isOptionSelected && !isDropDownOpen;
@@ -31,7 +44,7 @@
 		on:click={() => (isDropDownOpen = !isDropDownOpen)}
 	>
 		<div class="flex items-center justify-between">
-			<div>{dropdownText}</div>
+			<div class="capitalize">{dropdownText}</div>
 			{#if isDropDownOpen}
 				<ChevronUp />
 			{:else}
@@ -46,8 +59,8 @@
 					class="flex items-center justify-start gap-3 rounded-r-lg border-l-4 p-2 hover:border-teal-600 hover:bg-alabaster"
 					on:click={() => handleDropDownOptionClick(option)}
 				>
-					<img src={option.imageSource} alt={option.value} />
-					<div>{option.message}</div>
+					<svelte:component this={getIcon(option)} />
+					<div class="capitalize">{option}</div>
 				</button>
 			{/each}
 		</div>

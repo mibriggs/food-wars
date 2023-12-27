@@ -1,27 +1,18 @@
 <script lang="ts">
 	import { AlarmClock } from 'lucide-svelte';
-	import BreakfastIcon from '$images/breakfast.svg';
-	import DinnerIcon from '$images/dinner.svg';
-	import LunchIcon from '$images/lunch.svg';
-	import SnackIcon from '$images/snack.svg';
 	import MultiSelect from '$components/multi-select.svelte';
 	import NumberInput from '$components/number-input.svelte';
 	import RadioGroup from '$components/radio-group.svelte';
 	import StyledNumber from '$components/styled-number.svelte';
 	import StyledDropdown from '$components/styled-dropdown.svelte';
 	import { onMount } from 'svelte';
-	import type { Option, RadioOption } from '$types';
+	import type { Meal, RadioOption } from '$types';
 	import InputTags from '$components/input-tags.svelte';
 	import Chips from '$components/chips.svelte';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
-	const options: Option[] = [
-		{ value: 'breakfast', message: 'Breakfast', imageSource: BreakfastIcon },
-		{ value: 'lunch', message: 'Lunch', imageSource: LunchIcon },
-		{ value: 'dinner', message: 'Dinner', imageSource: DinnerIcon },
-		{ value: 'snack', message: 'Snack', imageSource: SnackIcon }
-	];
+	const options: Meal[] = ['breakfast', 'lunch', 'dinner', 'snack'];
 	const radioOptions: RadioOption[] = [
 		{ value: 'low', heading: 'Low', subHeading: 'Less than 500 calories' },
 		{ value: 'medium', heading: 'Medium', subHeading: 'Around 500-800 calories' },
@@ -146,8 +137,9 @@
 		</div>
 	</div>
 
-	<div class="flex h-full items-center justify-end pb-5">
-		<a href="/fight" class="w-fit rounded-2xl bg-teal-600 p-4 text-2xl text-snow">Get Started</a>
+	<div class="flex h-full items-center justify-end pb-4">
+		<a href="/fight" class="w-fit rounded-xl bg-teal-600 px-4 py-2 text-xl text-snow">Get Started</a
+		>
 	</div>
 </div>
 

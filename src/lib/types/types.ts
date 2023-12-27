@@ -1,8 +1,4 @@
-export type Option = {
-	value: string;
-	imageSource: string;
-	message: string;
-};
+export type Meal = 'breakfast' | 'lunch' | 'dinner' | 'snack';
 
 export type RadioOption = {
 	value: string;
