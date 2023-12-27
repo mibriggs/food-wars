@@ -12,6 +12,7 @@
 	import { onMount } from 'svelte';
 	import type { Option, RadioOption } from '$types';
 	import InputTags from '$components/input-tags.svelte';
+	import Chips from '$components/chips.svelte';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
@@ -127,6 +128,7 @@
 
 		<div class="text-md flex flex-col gap-3 md:text-lg">
 			<StyledNumber index="5">Cuisines?</StyledNumber>
+			<Chips />
 			<!-- <div class="flex flex-col w-2/5">
 				<input type="text" />
 				<hr />
