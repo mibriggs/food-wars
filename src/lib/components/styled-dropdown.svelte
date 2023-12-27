@@ -1,6 +1,5 @@
 <script lang="ts">
-	import DownArrowIcon from '$images/arrow_drop_down.svg';
-	import UpArrowIcon from '$images/arrow_drop_up.svg';
+	import { ChevronDown, ChevronUp } from 'lucide-svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { slide } from 'svelte/transition';
 	import type { Option } from '$types';
@@ -31,9 +30,13 @@
 		} text-md p-2 text-left duration-500 active:border-teal-600 active:text-teal-600`}
 		on:click={() => (isDropDownOpen = !isDropDownOpen)}
 	>
-		<div class="flex justify-between">
+		<div class="flex items-center justify-between">
 			<div>{dropdownText}</div>
-			<img src={isDropDownOpen ? UpArrowIcon : DownArrowIcon} alt="Arrow Icon" />
+			{#if isDropDownOpen}
+				<ChevronUp />
+			{:else}
+				<ChevronDown />
+			{/if}
 		</div>
 	</button>
 	{#if isDropDownOpen}

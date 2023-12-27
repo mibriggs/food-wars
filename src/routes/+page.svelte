@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AlarmIcon from '$images/alarm.svg';
+	import { AlarmClock } from 'lucide-svelte';
 	import BreakfastIcon from '$images/breakfast.svg';
 	import DinnerIcon from '$images/dinner.svg';
 	import LunchIcon from '$images/lunch.svg';
@@ -94,7 +94,7 @@
 			<div class="flex flex-col gap-2">
 				<label for="time" class="self-center">
 					<div class="flex items-center justify-center gap-2">
-						<img src={AlarmIcon} alt="clock" />
+						<AlarmClock />
 						<div>{timeLabel}</div>
 					</div>
 				</label>

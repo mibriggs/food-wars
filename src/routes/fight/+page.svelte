@@ -1,8 +1,5 @@
 <script lang="ts">
-	import RestartIcon from '$images/restart.svg';
-	import IosRightIcon from '$images/arrow_right_ios.svg';
-	import ForwardArrowIcon from '$images/arrow_forward_ios.svg';
-	import BackwardArrowIcon from '$images/arrow_back_ios.svg';
+	import { RefreshCcw, ChevronLeft, ChevronRight, StepForward } from 'lucide-svelte';
 	import FoodCard from '$components/food-card.svelte';
 
 	let isLeftSelected: boolean = false;
@@ -37,7 +34,7 @@
 <svelte:window bind:innerWidth={screenWidth} />
 <div class="flex h-full flex-col items-center gap-8 font-sawarabi">
 	<a href="/" class="self-start p-4">
-		<img src={RestartIcon} alt="restart" />
+		<RefreshCcw size="28" />
 	</a>
 
 	<div class="flex flex-col items-center justify-center gap-1">
@@ -61,13 +58,13 @@
 			isSelected={isRightSelected}
 			on:cardClicked={() => handleSelection(true)}
 		/>
-		<div class="flex items-center justify-center gap-2 py-5 font-sawarabi text-2xl">
+		<div class="flex items-center justify-center gap-2 py-5 font-sawarabi text-xl">
 			<button on:click={() => (isOnSecondCard = !isOnSecondCard)}>
-				<img src={BackwardArrowIcon} alt="" />
+				<ChevronLeft />
 			</button>
 			{isOnSecondCard ? 2 : 1}/2
 			<button on:click={() => (isOnSecondCard = !isOnSecondCard)}>
-				<img src={ForwardArrowIcon} alt="" />
+				<ChevronRight />
 			</button>
 		</div>
 	</div>
@@ -78,7 +75,7 @@
 	>
 		<div class="flex items-center justify-center gap-2 text-raisin">
 			<div>Continue With Bulgogi {isLeftSelected ? '1' : '2'}</div>
-			<img src={IosRightIcon} alt="restart" />
+			<StepForward />
 		</div>
 	</button>
 </div>

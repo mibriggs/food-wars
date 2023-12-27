@@ -1,7 +1,5 @@
 <script lang="ts">
-	import CautionIcon from '$images/warning.svg';
-	import DownArrowIcon from '$images/arrow_drop_down.svg';
-	import UpArrowIcon from '$images/arrow_drop_up.svg';
+	import { AlertTriangle, ChevronDown, ChevronUp } from 'lucide-svelte';
 	import { slide } from 'svelte/transition';
 	import type { MultiSelectOption } from '$types';
 	import Checkbox from './checkbox.svelte';
@@ -37,10 +35,14 @@
 		on:click={() => (isDropDownOpen = !isDropDownOpen)}
 	>
 		<div class="flex items-center gap-2 pl-2">
-			<img src={CautionIcon} alt="" />
+			<AlertTriangle />
 			<div>{name}</div>
 		</div>
-		<img src={isDropDownOpen ? UpArrowIcon : DownArrowIcon} alt="arrow icon" />
+		{#if isDropDownOpen}
+			<ChevronUp />
+		{:else}
+			<ChevronDown />
+		{/if}
 	</button>
 
 	{#if isDropDownOpen}
@@ -68,6 +70,11 @@
 		</div>
 	{/if}
 </div>
+
+<!-- Kinda want to revamp the number input field and also the meal dropdown and maybe use less svg images? -->
+<!-- I like melt ui combobox and select? Also skeletons listbox -->
+<!-- oooooo grails number input -->
+<!-- maybe i should rethink it and use the dropdown for cuisines and something else for food? -->
 
 <style lang="postcss">
 	.search-bg {
