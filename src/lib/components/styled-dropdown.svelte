@@ -22,7 +22,7 @@
 </script>
 
 <div
-	class="flex w-full flex-col gap-2 rounded-lg text-left font-bold tracking-wider md:w-1/2 lg:w-2/5 xl:w-1/4"
+	class="flex w-full flex-col gap-2 rounded-lg text-left tracking-wider md:w-1/2 lg:w-2/5 xl:w-1/4"
 >
 	<button
 		class={`rounded-lg ${dropdownClosedAndChoiceMade ? ' bg-alabaster' : 'bg-stone-200'} border-2 ${
