@@ -9,7 +9,13 @@
 	import type { Meal, RadioOption } from '$types';
 	import InputTags from '$components/input-tags.svelte';
 	import Chips from '$components/chips.svelte';
-	import { intolerancesStore, dietsStore, cuisinesStore, ingredientsStore, mealsStore } from '$stores/stores';
+	import {
+		intolerancesStore,
+		dietsStore,
+		cuisinesStore,
+		ingredientsStore,
+		mealsStore
+	} from '$stores/stores';
 	import { goto } from '$app/navigation';
 	import { foodResponseSchema, type MealObject } from '$lib/types/schemas';
 
@@ -83,7 +89,10 @@
 		caloricChoice = event.detail.value;
 	};
 
-	const handleClick = async () => {
+	const handleClick = async (
+		event: MouseEvent & { currentTarget: EventTarget & HTMLAnchorElement }
+	) => {
+		event.preventDefault();
 		const res = await fetch('/api/fight', {
 			method: 'POST',
 			body: JSON.stringify({
@@ -102,11 +111,11 @@
 		});
 		if (res.ok) {
 			const body = await res.json();
-			console.log(body)
+			console.log(body);
 			const bodyData = foodResponseSchema.safeParse(body);
 			if (bodyData.success) {
-				const meals: MealObject[] = bodyData.data.results.map(meal => meal as MealObject)
-				mealsStore.set(meals)
+				const meals: MealObject[] = bodyData.data.results.map((meal) => meal as MealObject);
+				mealsStore.set(meals);
 			}
 		}
 		goto('/fight');
@@ -177,9 +186,13 @@
 	</div>
 
 	<div class="flex h-full items-center justify-end pb-4">
-		<button class="w-fit rounded-xl bg-teal-600 px-4 py-2 text-xl text-snow" on:click={handleClick}>
+		<a
+			class="w-fit rounded-xl bg-teal-600 px-4 py-2 text-xl text-snow"
+			on:click={handleClick}
+			href="/fight"
+		>
 			Get Started
-		</button>
+		</a>
 	</div>
 </div>
 

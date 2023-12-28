@@ -15,24 +15,26 @@ export const foodRequestSchema = z.object({
 });
 
 export const mealSchema = z.object({
-    id: z.number(),
-    title: z.string(),
-    image: z.string(),
-    imageType: z.string(),
-    nutrition: z.object({
-        nutrients: z.object({
-            name: z.string(),
-            amount: z.number(),
-            unit: z.string()
-        }).array()
-    })
+	id: z.number(),
+	title: z.string(),
+	image: z.string(),
+	imageType: z.string(),
+	nutrition: z.object({
+		nutrients: z
+			.object({
+				name: z.string(),
+				amount: z.number(),
+				unit: z.string()
+			})
+			.array()
+	})
 });
 
 export const foodResponseSchema = z.object({
-    results: mealSchema.array(),
-    offset: z.number(),
-    number: z.number(),
-    totalResults: z.number()
+	results: mealSchema.array(),
+	offset: z.number(),
+	number: z.number(),
+	totalResults: z.number()
 });
 
 export type FoodRequest = z.infer<typeof foodRequestSchema>;

@@ -5,6 +5,7 @@
 
 	export let isSelected: boolean = false;
 	export let isHidden: boolean = false;
+	export let imageUrl: string = bulgogi;
 	let isFlipped: boolean = false;
 	const dispatch = createEventDispatcher();
 
@@ -31,7 +32,7 @@
 	>
 		<div class="front absolute flex h-full w-full flex-col items-center rotateY-180">
 			<img
-				src={bulgogi}
+				src={imageUrl}
 				alt="Bulgogi"
 				class="mt-[25px] h-[350px] w-[250px] rounded-4xl drop-shadow-overlay-alabaster md:mt-[25px] md:h-[525px] md:w-[350px]"
 			/>
