@@ -34,7 +34,7 @@
 	};
 </script>
 
-<div class="flex w-5/6 flex-col gap-4 rounded-lg border-2 px-2 py-3 md:w-1/2 xl:w-5/12">
+<div class="flex w-full flex-col gap-4 rounded-lg border-2 px-2 py-3 md:w-1/2 xl:w-5/12">
 	<div class="flex w-full flex-wrap gap-2 empty:hidden">
 		{#each $ingredientsStore as ingredient, index (ingredient)}
 			<div
