@@ -1,15 +1,11 @@
 <script lang="ts">
 	import type { MultiSelectOption } from '$types';
-	import { allergiesStore } from '$lib/stores/allergies';
+	import { allergiesStore } from '$stores/stores';
 	export let option: MultiSelectOption;
 
 	const handleClick = () => {
 		option.checked = !option.checked;
-		if (option.checked) {
-			allergiesStore.update((currentValue) => [...currentValue, option.id]);
-		} else {
-			allergiesStore.update((currentValue) => currentValue.filter((item) => item !== option.id));
-		}
+		option.checked? allergiesStore.addItem(option.id) : allergiesStore.deleteItem(option.id);
 	};
 </script>
 

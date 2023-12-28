@@ -12,7 +12,6 @@
 	};
 </script>
 
-<!-- State needs to be passed up + not as responsive as I'd like -->
 <div class="flex flex-wrap gap-3 sm:gap-4 md:flex-nowrap">
 	{#each radioOptions as option, index}
 		<button

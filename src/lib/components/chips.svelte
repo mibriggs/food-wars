@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { cuisinesStore } from '$stores/stores';
 	import { Check, Plus } from 'lucide-svelte';
 
 	const cuisines = ['american', 'italian', 'japanese', 'nigerian', 'indian', 'chinese'];
@@ -6,6 +7,7 @@
 
 	const handleClick = (currIndex: number) => {
 		isSelected[currIndex] = !isSelected[currIndex];
+        isSelected[currIndex] ? cuisinesStore.addItem(cuisines[currIndex]) : cuisinesStore.deleteItem(cuisines[currIndex])
 	};
 </script>
 

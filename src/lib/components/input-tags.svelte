@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { ingredientsStore } from '$stores/stores';
 	import toast from 'svelte-french-toast';
 	import { blur, scale } from 'svelte/transition';
 
-	let ingredients: string[] = [];
 	let newIngredient: string = '';
 
 	const showToast = (message: string, icon: string) => {
@@ -20,23 +20,23 @@
 			return;
 		}
 
-		if (ingredients.indexOf(newIngredient.trim().toLocaleLowerCase()) !== -1) {
+		if ($ingredientsStore.indexOf(newIngredient.trim().toLocaleLowerCase()) !== -1) {
 			showToast('Ingredient already added', '🙅🏾‍♂️');
 			return;
 		}
 
-		ingredients = [...ingredients, newIngredient.trim().toLocaleLowerCase()];
+		ingredientsStore.addItem(newIngredient.trim().toLocaleLowerCase())
 		newIngredient = '';
 	};
 
 	const removeIngredient = (ingredientIndex: number) => {
-		ingredients = ingredients.filter((_, index) => index !== ingredientIndex);
+		ingredientsStore.deleteItem($ingredientsStore[ingredientIndex])
 	};
 </script>
 
 <div class="flex w-5/6 flex-col gap-4 rounded-lg border-2 px-2 py-3 md:w-1/2 xl:w-5/12">
 	<div class="flex w-full flex-wrap gap-2 empty:hidden">
-		{#each ingredients as ingredient, index (ingredient)}
+		{#each $ingredientsStore as ingredient, index (ingredient)}
 			<div
 				class=" flex items-center justify-center gap-2 rounded-lg bg-stone-200 px-2 py-1"
 				in:scale
