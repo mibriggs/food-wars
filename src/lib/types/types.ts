@@ -7,8 +7,8 @@ export type RadioOption = {
 };
 
 export type MultiSelectOption = {
-	id: string;
 	value: string;
+	isIntolerance: boolean;
 	checked: boolean;
 };
 

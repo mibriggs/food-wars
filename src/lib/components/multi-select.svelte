@@ -3,20 +3,17 @@
 	import { slide } from 'svelte/transition';
 	import type { MultiSelectOption } from '$types';
 	import Checkbox from './checkbox.svelte';
+	import { diets, intolerances } from '../constants/constants';
 
 	export let name: string = 'Restrictions';
-	export let options: MultiSelectOption[] = [
-		// Dummy filler values
-		{ id: 'halal', value: 'Halal', checked: false },
-		{ id: 'kosher', value: 'Kosher', checked: false },
-		{ id: 'vegan', value: 'Vegan', checked: false },
-		{ id: 'vegetarian', value: 'Vegetarian', checked: false },
-		{ id: 'pescetarian', value: 'Pescetarian', checked: false },
-		{ id: 'peanut', value: 'Peanut', checked: false },
-		{ id: 'shellfish', value: 'Shellfish', checked: false },
-		{ id: 'gluten-free', value: 'Gluten Free', checked: false },
-		{ id: 'dairy-free', value: 'Dairy Free', checked: false }
-	];
+	export let options: MultiSelectOption[] = diets.concat(intolerances).map((restriction) => {
+		const option: MultiSelectOption = {
+			value: restriction,
+			isIntolerance: intolerances.indexOf(restriction) !== -1,
+			checked: false
+		};
+		return option;
+	});
 
 	let filteredList: MultiSelectOption[] = options;
 	let isDropDownOpen: boolean = false;

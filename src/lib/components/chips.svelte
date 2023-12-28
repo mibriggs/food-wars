@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { cuisinesStore } from '$stores/stores';
 	import { Check, Plus } from 'lucide-svelte';
+	import { cuisines } from '../constants/constants';
 
-	const cuisines = ['american', 'italian', 'japanese', 'nigerian', 'indian', 'chinese'];
 	const isSelected: boolean[] = new Array<boolean>(cuisines.length).fill(false);
 
 	const handleClick = (currIndex: number) => {
@@ -13,7 +13,7 @@
 	};
 </script>
 
-<div class="flex w-full flex-wrap gap-2 lg:w-1/2">
+<div class="flex w-full flex-wrap gap-2 sm:w-3/4">
 	{#each cuisines as cuisine, index}
 		<button
 			class="rounded-full border-2 p-1 px-3 text-center focus:shadow-none focus:outline-none"

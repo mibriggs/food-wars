@@ -1,3 +1,4 @@
+import type { MealObject } from '$lib/types/schemas';
 import { writable } from 'svelte/store';
 
 const createStore = (defaultVal: string[]) => {
@@ -15,6 +16,8 @@ const createStore = (defaultVal: string[]) => {
 	};
 };
 
-export const allergiesStore = createStore([]);
+export const intolerancesStore = createStore([]);
+export const dietsStore = createStore([]);
 export const cuisinesStore = createStore([]);
 export const ingredientsStore = createStore([]);
+export const mealsStore = writable<MealObject[]>();

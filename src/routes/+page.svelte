@@ -9,7 +9,9 @@
 	import type { Meal, RadioOption } from '$types';
 	import InputTags from '$components/input-tags.svelte';
 	import Chips from '$components/chips.svelte';
-	import { allergiesStore, cuisinesStore, ingredientsStore } from '$stores/stores';
+	import { intolerancesStore, dietsStore, cuisinesStore, ingredientsStore, mealsStore } from '$stores/stores';
+	import { goto } from '$app/navigation';
+	import { foodResponseSchema, type MealObject } from '$lib/types/schemas';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
@@ -32,7 +34,8 @@
 		timeInMinutes,
 		mealType,
 		caloricChoice,
-		$allergiesStore,
+		$intolerancesStore,
+		$dietsStore,
 		$cuisinesStore,
 		$ingredientsStore,
 		numberOfOptions
@@ -78,6 +81,35 @@
 
 	const handleRadioValue = (event: CustomEvent<{ value: string }>): void => {
 		caloricChoice = event.detail.value;
+	};
+
+	const handleClick = async () => {
+		const res = await fetch('/api/fight', {
+			method: 'POST',
+			body: JSON.stringify({
+				time: timeInMinutes,
+				mealType: mealType,
+				calories: caloricChoice,
+				intolerances: $intolerancesStore,
+				diets: $dietsStore,
+				cuisines: $cuisinesStore,
+				ingredients: $ingredientsStore,
+				count: numberOfOptions
+			}),
+			headers: {
+				'content-type': 'application/json'
+			}
+		});
+		if (res.ok) {
+			const body = await res.json();
+			console.log(body)
+			const bodyData = foodResponseSchema.safeParse(body);
+			if (bodyData.success) {
+				const meals: MealObject[] = bodyData.data.results.map(meal => meal as MealObject)
+				mealsStore.set(meals)
+			}
+		}
+		goto('/fight');
 	};
 
 	$: timeLabel = timeInMinutes < 60 ? `${timeInMinutes} Minutes` : getHours();
@@ -145,8 +177,9 @@
 	</div>
 
 	<div class="flex h-full items-center justify-end pb-4">
-		<a href="/fight" class="w-fit rounded-xl bg-teal-600 px-4 py-2 text-xl text-snow">Get Started</a
-		>
+		<button class="w-fit rounded-xl bg-teal-600 px-4 py-2 text-xl text-snow" on:click={handleClick}>
+			Get Started
+		</button>
 	</div>
 </div>
 
