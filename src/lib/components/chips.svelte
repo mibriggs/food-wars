@@ -7,7 +7,9 @@
 
 	const handleClick = (currIndex: number) => {
 		isSelected[currIndex] = !isSelected[currIndex];
-        isSelected[currIndex] ? cuisinesStore.addItem(cuisines[currIndex]) : cuisinesStore.deleteItem(cuisines[currIndex])
+		isSelected[currIndex]
+			? cuisinesStore.addItem(cuisines[currIndex])
+			: cuisinesStore.deleteItem(cuisines[currIndex]);
 	};
 </script>
 

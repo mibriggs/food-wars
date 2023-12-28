@@ -25,12 +25,12 @@
 			return;
 		}
 
-		ingredientsStore.addItem(newIngredient.trim().toLocaleLowerCase())
+		ingredientsStore.addItem(newIngredient.trim().toLocaleLowerCase());
 		newIngredient = '';
 	};
 
 	const removeIngredient = (ingredientIndex: number) => {
-		ingredientsStore.deleteItem($ingredientsStore[ingredientIndex])
+		ingredientsStore.deleteItem($ingredientsStore[ingredientIndex]);
 	};
 </script>
 

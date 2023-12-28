@@ -28,7 +28,15 @@
 	let caloricChoice: string;
 	let numberOfOptions: number = 4;
 
-	$: console.log(timeInMinutes, mealType, caloricChoice, $allergiesStore, $cuisinesStore, $ingredientsStore, numberOfOptions)
+	$: console.log(
+		timeInMinutes,
+		mealType,
+		caloricChoice,
+		$allergiesStore,
+		$cuisinesStore,
+		$ingredientsStore,
+		numberOfOptions
+	);
 
 	const setTypewriterMessage = (): void => {
 		if (index < typewriterMessage.length) {

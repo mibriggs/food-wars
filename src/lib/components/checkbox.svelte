@@ -5,7 +5,7 @@
 
 	const handleClick = () => {
 		option.checked = !option.checked;
-		option.checked? allergiesStore.addItem(option.id) : allergiesStore.deleteItem(option.id);
+		option.checked ? allergiesStore.addItem(option.id) : allergiesStore.deleteItem(option.id);
 	};
 </script>
 
