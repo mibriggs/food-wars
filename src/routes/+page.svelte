@@ -105,7 +105,7 @@
 					<input
 						type="range"
 						min="15"
-						max="480"
+						max="240"
 						step="15"
 						id="time"
 						name="time"
