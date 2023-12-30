@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Chasing } from 'svelte-loading-spinners';
 	import { navigating } from '$app/stores';
 	import { AlarmClock } from 'lucide-svelte';
 	import MultiSelect from '$components/multi-select.svelte';
@@ -76,7 +77,12 @@
 </script>
 
 {#if $navigating}
-	<div>Loading...</div>
+	<div
+		class="flex h-screen flex-col items-center justify-center gap-4 text-center font-sawarabi text-3xl font-bold text-raisin"
+	>
+		<div>Loading Data...</div>
+		<Chasing size="60" color="#0D9488" unit="px" duration="1s" />
+	</div>
 {:else}
 	<div class="flex h-screen flex-col gap-8 px-8 py-16 font-sawarabi text-raisin md:px-40">
 		<div class="flex flex-col gap-2">
