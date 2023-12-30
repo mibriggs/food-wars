@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Meal } from '$types';
+	import type { Meal } from '$types/types';
 	import { ChevronDown, ChevronUp, EggFried, Sandwich, Beef, Popcorn } from 'lucide-svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { slide } from 'svelte/transition';

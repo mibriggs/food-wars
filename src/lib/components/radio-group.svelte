@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	import type { RadioOption } from '$types';
+	import type { RadioOption } from '$types/types';
 
 	export let radioOptions: RadioOption[] = [];
 	const dispatch = createEventDispatcher();

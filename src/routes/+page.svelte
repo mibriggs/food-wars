@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { navigating } from '$app/stores';
 	import { AlarmClock } from 'lucide-svelte';
 	import MultiSelect from '$components/multi-select.svelte';
 	import NumberInput from '$components/number-input.svelte';
@@ -6,18 +7,11 @@
 	import StyledNumber from '$components/styled-number.svelte';
 	import StyledDropdown from '$components/styled-dropdown.svelte';
 	import { onMount } from 'svelte';
-	import type { Meal, RadioOption } from '$types';
+	import type { Meal, RadioOption } from '$types/types';
 	import InputTags from '$components/input-tags.svelte';
 	import Chips from '$components/chips.svelte';
-	import {
-		intolerancesStore,
-		dietsStore,
-		cuisinesStore,
-		ingredientsStore,
-		mealsStore
-	} from '$stores/stores';
-	import { goto } from '$app/navigation';
-	import { foodResponseSchema, type MealObject } from '$lib/types/schemas';
+	import { intolerancesStore, dietsStore, cuisinesStore, ingredientsStore } from '$stores/stores';
+	import { enhance } from '$app/forms';
 
 	const TIMEOUT_LENGTH: number = 60;
 	const typewriterMessage: string = 'Welcome to FoodWars!';
@@ -35,17 +29,6 @@
 	let mealType: string;
 	let caloricChoice: string;
 	let numberOfOptions: number = 4;
-
-	$: console.log(
-		timeInMinutes,
-		mealType,
-		caloricChoice,
-		$intolerancesStore,
-		$dietsStore,
-		$cuisinesStore,
-		$ingredientsStore,
-		numberOfOptions
-	);
 
 	const setTypewriterMessage = (): void => {
 		if (index < typewriterMessage.length) {
@@ -89,112 +72,94 @@
 		caloricChoice = event.detail.value;
 	};
 
-	const handleClick = async (
-		event: MouseEvent & { currentTarget: EventTarget & HTMLAnchorElement }
-	) => {
-		event.preventDefault();
-		const res = await fetch('/api/fight', {
-			method: 'POST',
-			body: JSON.stringify({
-				time: timeInMinutes,
-				mealType: mealType,
-				calories: caloricChoice,
-				intolerances: $intolerancesStore,
-				diets: $dietsStore,
-				cuisines: $cuisinesStore,
-				ingredients: $ingredientsStore,
-				count: numberOfOptions
-			}),
-			headers: {
-				'content-type': 'application/json'
-			}
-		});
-		if (res.ok) {
-			const body = await res.json();
-			console.log(body);
-			const bodyData = foodResponseSchema.safeParse(body);
-			if (bodyData.success) {
-				const meals: MealObject[] = bodyData.data.results.map((meal) => meal as MealObject);
-				mealsStore.set(meals);
-			}
-		}
-		goto('/fight');
-	};
-
 	$: timeLabel = timeInMinutes < 60 ? `${timeInMinutes} Minutes` : getHours();
 </script>
 
-<div class="flex h-screen flex-col gap-8 px-8 py-16 font-sawarabi text-raisin md:px-40">
-	<div class="flex flex-col gap-2">
-		<h1 class="text-2xl font-bold md:text-4xl lg:text-5xl">{typedSoFar}</h1>
-		<h2 class="text-md italic md:text-xl">
-			An interactive web app to help you decide what to cook when you have no idea
-		</h2>
-	</div>
+{#if $navigating}
+	<div>Loading...</div>
+{:else}
+	<div class="flex h-screen flex-col gap-8 px-8 py-16 font-sawarabi text-raisin md:px-40">
+		<div class="flex flex-col gap-2">
+			<h1 class="text-2xl font-bold md:text-4xl lg:text-5xl">{typedSoFar}</h1>
+			<h2 class="text-md italic md:text-xl">
+				An interactive web app to help you decide what to cook when you have no idea
+			</h2>
+		</div>
 
-	<div class="flex flex-col gap-14">
-		<div class="text-md flex flex-col gap-5 md:text-lg">
-			<StyledNumber index="1">How much time do you have?</StyledNumber>
-			<div class="flex flex-col gap-2">
-				<label for="time" class="self-center">
-					<div class="flex items-center justify-center gap-2">
-						<AlarmClock />
-						<div>{timeLabel}</div>
-					</div>
-				</label>
-				<input
-					type="range"
-					min="15"
-					max="480"
-					step="15"
-					id="time"
-					name="time"
-					bind:value={timeInMinutes}
-				/>
+		<div class="flex flex-col gap-14">
+			<div class="text-md flex flex-col gap-5 md:text-lg">
+				<StyledNumber index="1">How much time do you have?</StyledNumber>
+				<div class="flex flex-col gap-2">
+					<label for="time" class="self-center">
+						<div class="flex items-center justify-center gap-2">
+							<AlarmClock />
+							<div>{timeLabel}</div>
+						</div>
+					</label>
+					<input
+						type="range"
+						min="15"
+						max="480"
+						step="15"
+						id="time"
+						name="time"
+						bind:value={timeInMinutes}
+					/>
+				</div>
+			</div>
+
+			<div class="text-md flex flex-col gap-3 md:text-lg">
+				<StyledNumber index="2">What kind of food do you want?</StyledNumber>
+				<StyledDropdown {options} on:selectionMade={handleDropdownValue} />
+			</div>
+
+			<div class="text-md flex flex-col gap-3 md:text-lg">
+				<StyledNumber index="3">Caloric value?</StyledNumber>
+				<RadioGroup {radioOptions} on:radioPicked={handleRadioValue} />
+			</div>
+
+			<div class="text-md flex flex-col gap-3 md:text-lg">
+				<StyledNumber index="4">Any dietary restrictions?</StyledNumber>
+				<MultiSelect />
+			</div>
+
+			<div class="text-md flex flex-col gap-3 md:text-lg">
+				<StyledNumber index="5">Cuisines?</StyledNumber>
+				<Chips />
+			</div>
+
+			<div class="text-md flex flex-col gap-3 md:text-lg">
+				<StyledNumber index="6">What ingredients do you have?</StyledNumber>
+				<InputTags />
+			</div>
+
+			<div class="text-md flex flex-col gap-3 md:text-lg">
+				<StyledNumber index="7">How many options do you want?</StyledNumber>
+				<NumberInput min={4} max={64} bind:value={numberOfOptions} />
 			</div>
 		</div>
 
-		<div class="text-md flex flex-col gap-3 md:text-lg">
-			<StyledNumber index="2">What kind of food do you want?</StyledNumber>
-			<StyledDropdown {options} on:selectionMade={handleDropdownValue} />
-		</div>
-
-		<div class="text-md flex flex-col gap-3 md:text-lg">
-			<StyledNumber index="3">Caloric value?</StyledNumber>
-			<RadioGroup {radioOptions} on:radioPicked={handleRadioValue} />
-		</div>
-
-		<div class="text-md flex flex-col gap-3 md:text-lg">
-			<StyledNumber index="4">Any dietary restrictions?</StyledNumber>
-			<MultiSelect />
-		</div>
-
-		<div class="text-md flex flex-col gap-3 md:text-lg">
-			<StyledNumber index="5">Cuisines?</StyledNumber>
-			<Chips />
-		</div>
-
-		<div class="text-md flex flex-col gap-3 md:text-lg">
-			<StyledNumber index="6">What ingredients do you have?</StyledNumber>
-			<InputTags />
-		</div>
-
-		<div class="text-md flex flex-col gap-3 md:text-lg">
-			<StyledNumber index="7">How many options do you want?</StyledNumber>
-			<NumberInput min={4} max={64} bind:value={numberOfOptions} />
-		</div>
+		<form method="post" action="?/getMeals" class="flex justify-end pb-4" use:enhance>
+			<input
+				type="hidden"
+				name="mealObject"
+				value={JSON.stringify({
+					time: timeInMinutes,
+					mealType: mealType,
+					calories: caloricChoice,
+					intolerances: $intolerancesStore,
+					diets: $dietsStore,
+					cuisines: $cuisinesStore,
+					ingredients: $ingredientsStore,
+					count: numberOfOptions
+				})}
+			/>
+			<button class="w-fit rounded-xl bg-teal-600 px-4 py-2 text-xl text-snow">
+				Get Started
+			</button>
+		</form>
 	</div>
-
-	<div class="flex h-full items-center justify-end pb-4">
-		<a
-			class="w-fit rounded-xl bg-teal-600 px-4 py-2 text-xl text-snow"
-			on:click={handleClick}
-			href="/fight"
-		>
-			Get Started
-		</a>
-	</div>
-</div>
+{/if}
 
 <style lang="postcss">
 	/* Getting rid of base range styling */

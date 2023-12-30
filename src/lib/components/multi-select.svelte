@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { AlertTriangle, ChevronDown, ChevronUp } from 'lucide-svelte';
 	import { slide } from 'svelte/transition';
-	import type { MultiSelectOption } from '$types';
+	import type { MultiSelectOption } from '$types/types';
 	import Checkbox from './checkbox.svelte';
 	import { diets, intolerances } from '../constants/constants';
 

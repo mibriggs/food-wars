@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { MultiSelectOption } from '$types';
+	import type { MultiSelectOption } from '$types/types';
 	import { dietsStore, intolerancesStore } from '$stores/stores';
 	export let option: MultiSelectOption;
 
