@@ -10,7 +10,6 @@ import {
 import { SECRET_KEY_SPOONACULAR } from '$env/static/private';
 
 export const load: PageServerLoad = async ({ url }) => {
-	console.log('In /fight load function');
 	if (!url.searchParams.has('req')) throw redirect(302, '/');
 
 	const urlReqSearchParams = url.searchParams.get('req');
@@ -24,6 +23,7 @@ export const load: PageServerLoad = async ({ url }) => {
 		const queryParmsString = constructQueryParams(foodRequest);
 
 		const urlToFetch = `https://api.spoonacular.com/recipes/complexSearch?${queryParmsString}`;
+		console.log('Fetch request string', urlToFetch);
 		const res = await fetch(urlToFetch);
 		const resBody = (await res.json()) as unknown;
 
@@ -32,6 +32,8 @@ export const load: PageServerLoad = async ({ url }) => {
 			const resData: FoodResponse = maybeResBody.data;
 			const meals: MealObject[] = resData.results.map((meal) => meal);
 			return { meals: meals };
+		} else {
+			console.log(maybeResBody.error);
 		}
 	} catch (err) {
 		throw redirect(302, '/');
@@ -40,7 +42,7 @@ export const load: PageServerLoad = async ({ url }) => {
 
 const constructQueryParams = (requestObject: FoodRequest): string => {
 	const queryParams: string[] = [
-		`maxReadyTimes=${requestObject.time}`,
+		`maxReadyTime=${requestObject.time}`,
 		requestObject.mealType ? getMeal(requestObject.mealType) : 'minCalories=100&maxCalories=3000',
 		requestObject.calories ? getCalories(requestObject.calories) : '',
 		requestObject.intolerances.length === 0
@@ -52,7 +54,8 @@ const constructQueryParams = (requestObject: FoodRequest): string => {
 			? ''
 			: 'includeIngredients=' + requestObject.ingredients.join(','),
 		`number=${requestObject.count}`,
-		`apiKey=${SECRET_KEY_SPOONACULAR}`
+		`apiKey=${SECRET_KEY_SPOONACULAR}`,
+		'addRecipeInformation=true'
 	];
 	return queryParams.filter((qp) => qp !== '').join('&');
 };

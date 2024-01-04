@@ -11,7 +11,8 @@ const createStore = (defaultVal: string[]) => {
 		},
 		deleteItem: (itemToDelete: string) => {
 			update((currVal) => currVal.filter((item) => item !== itemToDelete));
-		}
+		},
+		reset: () => set(defaultVal)
 	};
 };
 

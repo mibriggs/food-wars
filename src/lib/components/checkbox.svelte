@@ -10,7 +10,7 @@
 	};
 </script>
 
-<button class="flex w-full items-center justify-start gap-2 text-xl" on:click={handleClick}>
+<button class="flex w-full items-center justify-start gap-2 text-lg" on:click={handleClick}>
 	<span
 		class:checked={option.checked}
 		class="h-6 w-6 rounded-md border-[1px] border-raisin bg-snow"
