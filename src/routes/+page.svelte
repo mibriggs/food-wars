@@ -55,7 +55,7 @@
 		intolerancesStore.reset();
 		dietsStore.reset();
 		cuisinesStore.reset();
-	}
+	};
 
 	const getHours = (): string => {
 		const MINUTES_IN_HOUR = 60;

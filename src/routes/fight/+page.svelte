@@ -73,14 +73,15 @@
 		</span>
 	{:else if data.meals && winningIndex !== undefined}
 		<div class="flex flex-col items-center gap-4">
-			<span class="flex items-center gap-2 text-3xl font-bold">
-				<Crown size="32" />
+			<span class="flex items-center gap-2 text-3xl font-bold text-teal-600">
+				<Crown size="32"/>
 				Winner:
 			</span>
 			<FoodCard
 				imageUrl={data.meals[winningIndex].image}
 				foodTitle={data.meals[winningIndex].title}
 				cookTime={data.meals[winningIndex].readyInMinutes}
+				mealInfo={data.meals[winningIndex]}
 			/>
 		</div>
 	{:else if data.meals}
@@ -95,6 +96,7 @@
 				imageUrl={data.meals[pointer1].image}
 				foodTitle={data.meals[pointer1].title}
 				cookTime={data.meals[pointer1].readyInMinutes}
+				mealInfo={data.meals[pointer1]}
 				on:cardClicked={() => handleSelection(false)}
 			/>
 			<FoodCard
@@ -102,6 +104,7 @@
 				imageUrl={data.meals[pointer2].image}
 				foodTitle={data.meals[pointer2].title}
 				cookTime={data.meals[pointer2].readyInMinutes}
+				mealInfo={data.meals[pointer2]}
 				on:cardClicked={() => handleSelection(true)}
 			/>
 		</div>
@@ -113,6 +116,7 @@
 				imageUrl={data.meals[pointer1].image}
 				foodTitle={data.meals[pointer1].title}
 				cookTime={data.meals[pointer1].readyInMinutes}
+				mealInfo={data.meals[pointer1]}
 				on:cardClicked={() => handleSelection(false)}
 			/>
 			<FoodCard
@@ -121,6 +125,7 @@
 				imageUrl={data.meals[pointer2].image}
 				foodTitle={data.meals[pointer2].title}
 				cookTime={data.meals[pointer2].readyInMinutes}
+				mealInfo={data.meals[pointer2]}
 				on:cardClicked={() => handleSelection(true)}
 			/>
 			<div class="flex items-center justify-center gap-2 py-5 font-sawarabi text-xl">

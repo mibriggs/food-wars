@@ -2,9 +2,11 @@
 	import bulgogi from '$images/bulgogi.jpeg';
 	import SeeMoreButton from '$components/see-more-button.svelte';
 	import { createEventDispatcher } from 'svelte';
+	import type { MealObject } from '$types/schemas';
 
 	export let isSelected: boolean = false;
 	export let isHidden: boolean = false;
+	export let mealInfo: MealObject;
 	export let imageUrl: string = bulgogi;
 	export let foodTitle: string = 'Bulgogi';
 	export let cookTime: number = 45;
@@ -15,9 +17,31 @@
 	const handleCardFlip = (): void => {
 		isFlipped = !isFlipped;
 	};
+
 	const handleCardClicked = (): void => {
 		dispatch('cardClicked');
 	};
+
+	const createNutrientString = (nutrient: MealObject["nutrition"]["nutrients"][0]): string => {
+		return `${Math.round(nutrient.amount)} ${nutrient.name}`;
+	}
+
+	const getIngredients = (analyzedInstructions: MealObject['analyzedInstructions'], separator: string): string => {
+		const ingsNested = analyzedInstructions?.map(analyzedInstruction => {
+			return analyzedInstruction.steps.map(step => {
+				return step.ingredients;
+			})
+		});
+
+		const ingsObjArr = ingsNested?.flat().flat()
+		const ingNames = ingsObjArr?.map(ing => ing.name);
+		return ingNames? [... new Set(ingNames)].join(separator) : ""
+	}
+
+	const getNutrients = (nutrients:  MealObject["nutrition"]["nutrients"]): string => {
+		const nutrientsArr = nutrients.map(nutrient => createNutrientString(nutrient));
+		return nutrientsArr.join(", ");
+	}
 </script>
 
 <div
@@ -46,10 +70,26 @@
 			<SeeMoreButton on:click={handleCardFlip}>Read More</SeeMoreButton>
 		</div>
 		<div
-			class="back absolute flex h-full w-full flex-col items-center justify-center"
+			class="back absolute flex h-full w-full flex-col items-center justify-start"
 			class:hidden-back={!isFlipped}
 		>
-			<div>Back Information</div>
+			<div class="absolute left-[20%] top-[5%] -translate-x-[20%] -translate-y-[5%] pl-8 text-lg">
+				<ul class="w-full list-disc">
+					<li>Total Servings: {mealInfo.servings}</li>
+					<li>Cost per serving: ${(mealInfo.pricePerServing/100).toFixed(2)}</li>
+					<li>Prep Time: {mealInfo.preparationMinutes} minutes</li>
+					<li>Cook Time: {mealInfo.cookingMinutes} minutes</li>
+					<li>Cuisines: {mealInfo.cuisines.length > 0 ? mealInfo.cuisines.join(', ') : "No listed cuisines"}</li>
+					<li>Dish Types: {mealInfo.dishTypes.length > 0 ? mealInfo.dishTypes.join(', ') : "No listed dish types"}</li>
+					<li>Diets: {mealInfo.diets.length > 0 ? mealInfo.diets.join(', ') : "No listed diets"}</li>
+					{#if mealInfo.analyzedInstructions}
+						<li>Ingredients: {getIngredients(mealInfo.analyzedInstructions, ", ")}</li>
+					{/if}
+					<li>Nutrients: {getNutrients(mealInfo.nutrition.nutrients)}</li>
+					<li><a on:click|stopPropagation href={mealInfo.sourceUrl} class=" text-teal-600 underline">View full recipe</a></li>
+					<li><a on:click|stopPropagation href={mealInfo.spoonacularSourceUrl} class=" text-teal-600 underline">View spoonacular listing</a></li>
+				</ul>
+			</div>
 			<SeeMoreButton on:click={handleCardFlip}>See Front</SeeMoreButton>
 		</div>
 	</div>

@@ -46,7 +46,37 @@ export const mealSchema = z.object({
 	dishTypes: z.string().array(),
 	diets: z.string().array(),
 	occasions: z.string().array(),
-	// analyzedInstructions: z.string().array().optional(),
+	analyzedInstructions: z
+		.object({
+			name: z.string(),
+			steps: z
+				.object({
+					eqipment: z
+						.object({
+							id: z.number(),
+							image: z.string(),
+							name: z.string(),
+							temperature: z.object({
+								number: z.number(),
+								unit: z.string()
+							})
+						})
+						.array()
+						.optional(),
+					ingredients: z
+						.object({
+							id: z.number(),
+							image: z.string(),
+							name: z.string()
+						})
+						.array(),
+					number: z.number(),
+					step: z.string()
+				})
+				.array()
+		})
+		.array()
+		.optional(),
 	spoonacularScore: z.number(),
 	spoonacularSourceUrl: z.string(),
 	nutrition: z.object({
