@@ -73,7 +73,7 @@
 		</span>
 	{:else if data.meals && winningIndex !== undefined}
 		<div class="flex flex-col items-center gap-4">
-			<span class="flex items-center gap-2 text-3xl font-bold text-teal-600">
+			<span class="flex items-center gap-2 text-3xl font-bold">
 				<Crown size="32"/>
 				Winner:
 			</span>
