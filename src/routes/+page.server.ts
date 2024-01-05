@@ -9,7 +9,8 @@ export const actions = {
 		if (mealObject !== null) {
 			const maybeFoodRequest = foodRequestSchema.safeParse(JSON.parse(mealObject.toString()));
 			if (maybeFoodRequest.success) {
-				throw redirect(300, `/fight?req=${mealObject}`);
+				const redirectToUrl = `/fight?req=${mealObject}`;
+				throw redirect(300, `${encodeURI(redirectToUrl)}`);
 			}
 		}
 	}

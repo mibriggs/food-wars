@@ -73,7 +73,7 @@
 			class="back absolute flex h-full w-full flex-col items-center justify-start"
 			class:hidden-back={!isFlipped}
 		>
-			<div class="absolute left-[20%] top-[5%] -translate-x-[20%] -translate-y-[5%] pl-8 text-md md:text-lg">
+			<div class="absolute left-[20%] top-[5%] -translate-x-[20%] -translate-y-[5%] pl-8 text-sm md:text-lg">
 				<ul class="w-full list-disc">
 					<li>Total Servings: {mealInfo.servings}</li>
 					<li>Cost per serving: ${(mealInfo.pricePerServing/100).toFixed(2)}</li>

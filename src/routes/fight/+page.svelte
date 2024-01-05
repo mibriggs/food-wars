@@ -9,7 +9,6 @@
 	} from 'lucide-svelte';
 	import FoodCard from '$components/food-card.svelte';
 	import type { PageData } from './$types';
-	import { onMount } from 'svelte';
 
 	export let data: PageData;
 
