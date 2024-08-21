@@ -1,13 +1,8 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from '../$types';
-import {
-	foodRequestSchema,
-	foodResponseSchema,
-	type FoodRequest,
-	type FoodResponse,
-	type MealObject
-} from '$lib/types/schemas';
+import { type FoodRequest, type FoodResponse, type MealObject } from '$lib/types/types';
 import { SECRET_KEY_SPOONACULAR } from '$env/static/private';
+import { foodRequestSchema, foodResponseSchema } from '$types/schemas';
 
 export const load: PageServerLoad = async ({ url }) => {
 	if (!url.searchParams.has('req')) throw redirect(302, '/');

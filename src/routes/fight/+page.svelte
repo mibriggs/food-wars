@@ -73,7 +73,7 @@
 	{:else if data.meals && winningIndex !== undefined}
 		<div class="flex flex-col items-center gap-4">
 			<span class="flex items-center gap-2 text-3xl font-bold">
-				<Crown size="32"/>
+				<Crown size="32" />
 				Winner:
 			</span>
 			<FoodCard
@@ -140,7 +140,7 @@
 
 		<button
 			class:conditionally-hidden={isNextButtonHidden}
-			class="text-md m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 shadow-lg sm:text-xl absolute bottom-1"
+			class="text-md absolute bottom-1 m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 shadow-lg sm:text-xl"
 			disabled={winningIndex !== undefined}
 			on:click={handleClick}
 		>

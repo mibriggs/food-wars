@@ -96,7 +96,3 @@ export const foodResponseSchema = z.object({
 	number: z.number(),
 	totalResults: z.number()
 });
-
-export type FoodRequest = z.infer<typeof foodRequestSchema>;
-export type FoodResponse = z.infer<typeof foodResponseSchema>;
-export type MealObject = z.infer<typeof mealSchema>;
