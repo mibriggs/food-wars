@@ -23,9 +23,10 @@ export const load: PageServerLoad = async ({ url }) => {
 		const queryParmsString = constructQueryParams(foodRequest);
 
 		const urlToFetch = `https://api.spoonacular.com/recipes/complexSearch?${queryParmsString}`;
-		console.log('Fetch request string', urlToFetch);
 		const res = await fetch(urlToFetch);
 		const resBody = (await res.json()) as unknown;
+
+		if (!res.ok) throw new Error('Something went wrong');
 
 		const maybeResBody = foodResponseSchema.safeParse(resBody);
 		if (maybeResBody.success) {
@@ -33,7 +34,7 @@ export const load: PageServerLoad = async ({ url }) => {
 			const meals: MealObject[] = resData.results.map((meal) => meal);
 			return { meals: meals };
 		} else {
-			console.log(maybeResBody.error);
+			console.log(maybeResBody.error.errors);
 		}
 	} catch (err) {
 		throw redirect(302, '/');

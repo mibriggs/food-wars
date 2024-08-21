@@ -77,8 +77,8 @@
 				<ul class="w-full list-disc">
 					<li>Total Servings: {mealInfo.servings}</li>
 					<li>Cost per serving: ${(mealInfo.pricePerServing/100).toFixed(2)}</li>
-					<li>Prep Time: {mealInfo.preparationMinutes} minutes</li>
-					<li>Cook Time: {mealInfo.cookingMinutes} minutes</li>
+					<li>Prep Time: {mealInfo.preparationMinutes === null? "Unknown" : `${mealInfo.preparationMinutes} minutes`} </li>
+					<li>Cook Time: {mealInfo.cookingMinutes === null? "Unknown" : `${mealInfo.cookingMinutes} minutes`}</li>
 					<li>Cuisines: {mealInfo.cuisines.length > 0 ? mealInfo.cuisines.join(', ') : "No listed cuisines"}</li>
 					<li>Dish Types: {mealInfo.dishTypes.length > 0 ? mealInfo.dishTypes.join(', ') : "No listed dish types"}</li>
 					<li>Diets: {mealInfo.diets.length > 0 ? mealInfo.diets.join(', ') : "No listed diets"}</li>
@@ -120,8 +120,7 @@
 
 	.selected {
 		--tw-border-opacity: 1;
-		border-color: rgb(13 148 136 / var(--tw-border-opacity));
-		border-width: 4px;
+		outline: 3px solid rgb(13 148 136 / var(--tw-border-opacity));
 	}
 
 	.hidden-card {
