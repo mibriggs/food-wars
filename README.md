@@ -1,38 +1,50 @@
-# create-svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
+**FoodWars README**
+=====================
 
-If you're seeing this, you've probably already done this step. Congrats!
+**Introduction**
+---------------
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+FoodWars is an interactive web app designed to help users decide what to cook when they have no idea. The app provides a fun and engaging way to explore different meal options and make informed decisions based on personal preferences.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+**Features**
+------------
 
-## Developing
+* Interactive meal selection process
+* Personalized recommendations based on user input
+* Ability to filter options by dietary restrictions and preferences
+* Integration with popular recipe APIs for seamless meal planning
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+**Getting Started**
+-------------------
 
-```bash
-npm run dev
+1. Clone the repository: `git clone https://github.com/your-username/foodwars.git`
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+4. Open the app in your browser: `http://localhost:3000`
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+**Build and Deployment**
+-----------------------
 
-## Building
+1. Build the production version: `npm run build`
+2. Deploy to your preferred platform (e.g. Vercel, Netlify, etc.)
 
-To create a production version of your app:
+**Acknowledgments**
+------------------
 
-```bash
-npm run build
-```
+* Special thanks to the Svelte community for their support and resources.
+* Thanks to the Lucide team for their awesome icon library.
 
-You can preview the production build with `npm run preview`.
+**Roadmap**
+------------
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+* Implement user authentication and profile management
+* Integrate with popular meal planning APIs or create personalized backend with scraper
+* Add support for multiple languages
+* Improve performance and optimization
+
+**Contact**
+----------
+
+If you have any questions or feedback, please don't hesitate to reach out. You can contact us at [briggs.ow@gmail.com](mailto:briggs.ow@gmail.com).
