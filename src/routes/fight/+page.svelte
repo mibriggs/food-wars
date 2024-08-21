@@ -140,7 +140,7 @@
 
 		<button
 			class:conditionally-hidden={isNextButtonHidden}
-			class="text-md absolute bottom-1 m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 shadow-lg sm:text-xl"
+			class="text-md m-4 self-end rounded-xl border-2 border-raisin bg-alabaster px-4 py-2 shadow-lg sm:text-xl"
 			disabled={winningIndex !== undefined}
 			on:click={handleClick}
 		>
