@@ -41,7 +41,6 @@ serviceWorker.addEventListener('fetch', (event) => {
         if (ASSETS.includes(url.pathname)) {
             const cachedResponse = await cache.match(url.pathname);
             if (cachedResponse) return cachedResponse; // if the response has been cached just return it?
-
         }
 
         try {

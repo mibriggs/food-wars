@@ -15,7 +15,6 @@
 						newServiceWorker.postMessage({ type: 'SKIP_WAITING' });
 						window.location.reload();
 					}
-					// toast.error("", { duration: 3000, position: 'top-center' });
 				}
 			});
 		});
