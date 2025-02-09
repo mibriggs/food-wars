@@ -1,6 +1,27 @@
 <script>
-	import { Toaster } from 'svelte-french-toast';
+	import toast, { Toaster } from 'svelte-french-toast';
 	import '../app.css';
+	import { onMount } from 'svelte';
+
+	const detectServiceWorkerUpdate = async () => {
+		const registration = await navigator.serviceWorker.ready;
+
+		registration.addEventListener('updatefound', () => {
+			const newServiceWorker = registration.installing;
+
+			newServiceWorker?.addEventListener('statechange', () => {
+				if (newServiceWorker.state === 'installing') {
+					if (confirm("A new version is available! Please reload to update")) {
+						newServiceWorker.postMessage({ type: 'SKIP_WAITING' });
+						window.location.reload();
+					}
+					// toast.error("", { duration: 3000, position: 'top-center' });
+				}
+			});
+		});
+	}
+
+	onMount(() => { detectServiceWorkerUpdate() })
 </script>
 
 <Toaster />

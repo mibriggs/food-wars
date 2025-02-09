@@ -1,0 +1,26 @@
+{
+    "name": "FoodWars!",
+    "short_name": "FoodWars!",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fcf7f8",
+    "theme_color": "#fcf7f8",
+    "description": "An app to help you decide what to cook",
+    "icons": [
+        {
+            "src": "pwa-64x64.png",
+            "type": "image/png",
+            "sizes": "64x64"
+        },
+        {
+            "src": "pwa-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "pwa-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
